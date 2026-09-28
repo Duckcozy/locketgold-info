@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#be185d" />
+  <title>Locket Gold Là Gì? Bảng Giá & Cách Nâng Cấp An Toàn | Locket Gold VN</title>
+  <meta name="description" content="Tìm hiểu Locket Gold, tính năng, bảng giá và quy trình nâng cấp chỉ bằng Username. Không yêu cầu mật khẩu, hỗ trợ iOS và Android." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060a17; --card: rgba(15, 23, 42, 0.85); --border: rgba(255, 255, 255, 0.08);
+      --gold: #fbbf24; --gold-dark: #f59e0b; --red: #ef4444; --green: #10b981;
+      --text: #f8fafc; --muted: #94a3b8; --font: 'Be Vietnam Pro', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font); background: var(--bg); color: var(--text);
+      min-height: 100vh; line-height: 1.6; padding-bottom: 70px;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(245, 158, 11, 0.15), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 0%, rgba(190, 24, 93, 0.12), transparent);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font-family: inherit; }
+    img { max-width: 100%; height: auto; }
+
+    /* HEADER */
+    .main-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(6, 10, 23, 0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+    }
+    .header-container {
+      max-width: 1280px; margin: 0 auto; padding: 0.75rem 1.25rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .header-logo {
+      font-weight: 900; font-size: 1.15rem;
+      background: linear-gradient(135deg, var(--gold), var(--red));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      display: flex; align-items: center; gap: 0.4rem; white-space: nowrap;
+    }
+    .header-logo span { font-size: 1.4rem; -webkit-text-fill-color: initial; }
+    .desktop-nav { display: flex; gap: 0.05rem; flex-wrap: wrap; align-items: center; }
+    .nav-link {
+      padding: 0.4rem 0.65rem; border-radius: 10px;
+      font-size: 0.75rem; font-weight: 700; color: #cbd5e1;
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .nav-link:hover, .nav-link.active { color: #fff; background: rgba(255,255,255,0.06); }
+    .nav-link.gold-highlight {
+      background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(239,68,68,0.15));
+      color: var(--gold); border: 1px solid rgba(245,158,11,0.35);
+    }
+    .gold-badge {
+      background: linear-gradient(135deg, var(--gold-dark), var(--red));
+      color: #fff; font-size: 0.6rem; font-weight: 900;
+      padding: 1px 6px; border-radius: 9999px; margin-left: 3px;
+    }
+    .header-account {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.75rem; color: var(--muted);
+    }
+    .header-account strong { color: #e2e8f0; display: block; font-size: 0.8rem; }
+    .header-account a {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      padding: 6px 12px; border-radius: 10px; font-weight: 700; color: #fff; font-size: 0.78rem;
+    }
+    .mobile-btn { display: none; background: none; border: none; color: #fff; cursor: pointer; font-size: 1.4rem; padding: 4px 8px; }
+    @media (max-width: 1050px) {
+      .desktop-nav, .header-account { display: none; }
+      .mobile-btn { display: block; }
+    }
+    .mobile-drawer {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+    }
+    .mobile-drawer.open { display: block; }
+    .drawer-content {
+      position: absolute; right: 0; top: 0; bottom: 0; width: min(300px, 88vw);
+      background: #0f172a; padding: 1.25rem; overflow-y: auto;
+      border-left: 1px solid rgba(245,158,11,0.25);
+    }
+    .drawer-link {
+      display: block; padding: 0.85rem 0.75rem;
+      font-weight: 700; color: #e2e8f0; border-radius: 10px; margin-bottom: 0.25rem;
+    }
+    .drawer-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+    .drawer-link.gold { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.25rem 3rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;
+    }
+    @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 9999px;
+      background: rgba(245, 158, 11, 0.12); border: 1.5px solid rgba(245, 158, 11, 0.35);
+      color: var(--gold); font-size: 0.85rem; font-weight: 800;
+      letter-spacing: 0.04em; margin-bottom: 1.25rem;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+    }
+    .hero h1 {
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem); font-weight: 900; margin-bottom: 1rem; line-height: 1.25;
+      background: linear-gradient(135deg, #fff 40%, var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; max-width: 560px; }
+    .hero-metrics { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .metric { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 700; }
+    .metric.gold { color: var(--gold); }
+    .metric.green { color: var(--green); }
+    .hero-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+      color: #fff; font-weight: 900; font-size: 1.05rem; padding: 14px 28px;
+      border-radius: 16px; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 6px 25px rgba(239, 68, 68, 0.45); transition: all 0.25s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(239, 68, 68, 0.55); }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+    .btn-secondary {
+      background: transparent; border: 1.5px solid rgba(255,255,255,0.2);
+      color: #e2e8f0; font-weight: 700; font-size: 0.95rem; padding: 14px 22px;
+      border-radius: 16px; cursor: pointer; transition: all 0.25s;
+      display: inline-flex; align-items: center;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
+    .hero-card {
+      background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(245, 158, 11, 0.35); border-radius: 28px;
+      padding: 1.75rem; max-width: 440px; margin: 0 auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center;
+    }
+    .hero-card-badge {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #060a17;
+      padding: 8px 18px; border-radius: 9999px; font-size: 0.85rem; font-weight: 900;
+      margin-bottom: 1.25rem; display: inline-block;
+    }
+    .hero-card-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .hero-points {
+      background: rgba(6, 10, 23, 0.8); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; text-align: left;
+    }
+    .hero-point { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #cbd5e1; }
+    .check { color: var(--green); font-weight: 900; }
+
+    /* SECTION */
+    .section { max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.25rem 3.5rem; }
+    .section-label {
+      display: inline-block; font-size: 0.8rem; font-weight: 800; color: var(--gold);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      background: rgba(245, 158, 11, 0.1); padding: 5px 14px; border-radius: 9999px;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+    .section-title { font-size: clamp(1.75rem, 3.5vw, 2.4rem); font-weight: 900; color: #fff; margin-top: 0.75rem; }
+    .section-head { text-align: center; margin-bottom: 2.5rem; }
+    .section-desc { color: var(--muted); max-width: 560px; margin: 0.75rem auto 0; font-size: 0.95rem; }
+
+    /* BENEFITS */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .benefit-card {
+      background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255,255,255,0.08); border-radius: 22px;
+      padding: 1.5rem 1.25rem; text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35); transition: transform 0.25s;
+    }
+    .benefit-card:hover { transform: translateY(-4px); }
+    .benefit-icon { font-size: 3rem; margin-bottom: 0.75rem; }
+    .benefit-tag { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.35rem; }
+    .benefit-card h3 { font-size: 1.15rem; font-weight: 900; color: #f8fafc; margin-bottom: 0.6rem; }
+    .benefit-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+    /* PRICING */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem; align-items: stretch; max-width: 1080px; margin: 0 auto;
+    }
+    .price-card {
+      position: relative; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 26px; padding: 2.25rem 1.75rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.3s;
+    }
+    .price-card.featured {
+      background: linear-gradient(180deg, rgba(245,158,11,0.14) 0%, rgba(253,209,240,0.15) 100%);
+      border: 2px solid rgba(245, 158, 11, 0.65); box-shadow: 0 20px 45px rgba(245, 158, 11, 0.2);
+    }
+    .price-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff;
+      font-weight: 900; font-size: 0.8rem; padding: 4px 18px; border-radius: 9999px;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.45); letter-spacing: 0.05em;
+    }
+    .price-card h3 { font-size: 1.3rem; font-weight: 900; color: #fff; margin-bottom: 0.85rem; }
+    .price-amount { display: flex; align-items: baseline; gap: 6px; margin-bottom: 1.25rem; }
+    .price-amount .num { font-size: 2.5rem; font-weight: 900; color: #fff; }
+    .price-card.featured .price-amount .num { color: var(--gold); }
+    .price-amount .unit { font-size: 0.9rem; color: #cbd5e1; font-weight: 600; }
+    .features { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem; }
+    .feature { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; }
+    .feature-dot {
+      margin-top: 2px; width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15); color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 0.7rem; font-weight: 900;
+    }
+    .price-card.featured .feature-dot { background: rgba(245, 158, 11, 0.2); color: var(--gold); }
+    .btn-plan {
+      width: 100%; padding: 14px; border-radius: 14px; font-weight: 900; font-size: 1rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+      border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: #fff; transition: all 0.25s;
+    }
+    .btn-plan:hover { background: rgba(255,255,255,0.14); }
+    .btn-plan.featured {
+      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+      border: none; box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+    }
+
+    /* UY TIN - đầy đủ */
+    .uytin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+    .uytin-card {
+      background: rgba(15, 23, 42, 0.8); border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 18px; padding: 1.5rem 1.25rem; text-align: center;
+    }
+    .uytin-card .num { font-size: 2rem; font-weight: 900; color: var(--gold); }
+    .uytin-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 0.35rem; }
+    .uytin-list {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;
+    }
+    .uytin-item {
+      background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 1.25rem 1.35rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .uytin-item .icon { font-size: 1.75rem; flex-shrink: 0; }
+    .uytin-item h4 { font-size: 1rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .uytin-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    /* BAI VIET */
+    .posts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .post-card {
+      background: rgba(15, 23, 42, 0.8); border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 20px; overflow: hidden; transition: transform 0.25s, border-color 0.25s;
+      cursor: pointer;
+    }
+    .post-card:hover { transform: translateY(-4px); border-color: rgba(245,158,11,0.4); }
+    .post-thumb {
+      height: 140px; background: linear-gradient(135deg, rgba(245,158,11,0.25), rgba(239,68,68,0.2));
+      display: flex; align-items: center; justify-content: center; font-size: 3rem;
+    }
+    .post-body { padding: 1.25rem 1.35rem; }
+    .post-tag {
+      font-size: 0.7rem; font-weight: 800; color: var(--gold);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;
+    }
+    .post-card h3 { font-size: 1.05rem; font-weight: 900; margin-bottom: 0.5rem; line-height: 1.35; }
+    .post-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.55; margin-bottom: 0.85rem; }
+    .post-meta { font-size: 0.75rem; color: #64748b; }
+
+    /* CTV */
+    .ctv-box {
+      background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(245,158,11,0.3);
+      border-radius: 22px; padding: 2rem 1.75rem; max-width: 720px; margin: 0 auto; text-align: center;
+    }
+    .ctv-box h3 { font-size: 1.35rem; font-weight: 900; margin-bottom: 0.75rem; }
+    .ctv-box p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.6; }
+    .ctv-perks { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-bottom: 1.5rem; }
+    .ctv-perk {
+      background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3);
+      color: var(--gold); font-size: 0.8rem; font-weight: 700;
+      padding: 6px 14px; border-radius: 9999px;
+    }
+
+    /* REVIEWS */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .review-card {
+      background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px; padding: 1.75rem; backdrop-filter: blur(16px);
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .stars { color: var(--gold); letter-spacing: 2px; font-size: 0.95rem; }
+    .review-tag { font-size: 0.75rem; font-weight: 800; color: var(--green); background: rgba(16, 185, 129, 0.12); padding: 2px 8px; border-radius: 9999px; }
+    .review-text { color: #cbd5e1; font-size: 0.925rem; line-height: 1.6; margin: 0.85rem 0 1.25rem; flex: 1; }
+    .review-author { display: flex; align-items: center; gap: 0.85rem; }
+    .avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, #ef4444, #fbbf24);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; color: #fff; font-size: 0.95rem;
+    }
+    .author-name { font-size: 0.95rem; font-weight: 900; color: #fff; }
+    .author-user { font-size: 0.78rem; color: var(--muted); }
+
+    /* HUONG DAN */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+    .step-card {
+      background: rgba(15, 23, 42, 0.8); border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 18px; padding: 1.5rem 1.25rem;
+    }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--red));
+      color: #fff; font-weight: 900; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 0.85rem;
+    }
+    .step-card h3 { font-size: 1.05rem; font-weight: 900; margin-bottom: 0.4rem; }
+    .step-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.55; }
+
+    /* FAQ */
+    .faq-list { max-width: 840px; margin: 0 auto; }
+    .faq-item {
+      background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; margin-bottom: 0.75rem; overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 1rem 1.25rem; cursor: pointer; font-weight: 700; font-size: 0.95rem;
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item[open] summary { color: var(--gold); }
+    .faq-answer { padding: 0 1.25rem 1.15rem; font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+    .faq-answer a { color: var(--gold); text-decoration: underline; }
+
+    /* LIEN HE */
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .contact-card {
+      background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 1.75rem 1.5rem; text-align: center;
+      transition: border-color 0.25s;
+    }
+    .contact-card:hover { border-color: rgba(245,158,11,0.4); }
+    .contact-card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .contact-card h3 { font-size: 1.1rem; font-weight: 900; margin-bottom: 0.4rem; }
+    .contact-card p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.5; }
+    .contact-card a.btn-primary { font-size: 0.9rem; padding: 10px 20px; }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid rgba(245, 158, 11, 0.2);
+      padding: 2.5rem 1.25rem 1.5rem; max-width: 1280px; margin: 0 auto;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-brand p { color: var(--muted); font-size: 0.9rem; margin: 0.75rem 0 1rem; max-width: 320px; }
+    .footer-contact { font-size: 0.85rem; color: #cbd5e1; display: flex; flex-direction: column; gap: 0.4rem; }
+    .footer-col-title { font-weight: 800; margin-bottom: 0.75rem; color: var(--gold); font-size: 0.9rem; }
+    .footer-col a { display: block; color: var(--muted); font-size: 0.85rem; padding: 0.3rem 0; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { text-align: center; font-size: 0.8rem; color: var(--muted); padding-top: 1.25rem; border-top: 1px solid var(--border); }
+
+    /* FLOAT */
+    .float-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+      background: rgba(6, 10, 23, 0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.6);
+    }
+    .float-bar .btn-primary { padding: 8px 18px; font-size: 0.85rem; }
+    .float-contact {
+      position: fixed; bottom: 80px; right: 20px; z-index: 95;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--red));
+      border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; box-shadow: 0 4px 20px rgba(239, 68, 68, 0.5); transition: transform 0.25s;
+    }
+    .float-contact:hover { transform: scale(1.08); }
+
+    /* SALE POPUP */
+    .sale-popup {
+      position: fixed; bottom: 90px; left: 16px; z-index: 96;
+      max-width: 320px; opacity: 0; transform: translateY(12px);
+      transition: all 0.35s ease; pointer-events: none;
+    }
+    .sale-popup.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .sale-card {
+      background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 14px; padding: 0.85rem 1rem; display: flex; gap: 0.75rem;
+      align-items: flex-start; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;
+    }
+    .sale-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--red));
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; position: relative;
+    }
+    .sale-live { position: absolute; bottom: -2px; right: -2px; width: 14px; height: 14px; border-radius: 50%; background: var(--green); border: 2px solid #0f172a; }
+    .sale-badge { font-size: 0.68rem; font-weight: 800; color: var(--green); background: rgba(16,185,129,0.15); padding: 1px 7px; border-radius: 9999px; }
+    .sale-time { font-size: 0.7rem; color: var(--muted); }
+    .sale-msg { font-size: 0.82rem; color: #cbd5e1; margin-top: 0.25rem; line-height: 1.4; }
+    .sale-msg strong { color: #fff; }
+    .sale-close { position: absolute; top: 6px; right: 8px; background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 300;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #0f172a; border: 1.5px solid rgba(245, 158, 11, 0.4);
+      border-radius: 22px; padding: 1.75rem; width: 100%; max-width: 440px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6); max-height: 90vh; overflow-y: auto;
+    }
+    .modal h3 { font-size: 1.25rem; font-weight: 900; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 8px; }
+    .modal-plan { font-size: 0.85rem; color: var(--gold); font-weight: 700; margin-bottom: 1.25rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .form-group input {
+      width: 100%; background: rgba(6, 10, 23, 0.8); border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 12px; padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem; outline: none;
+    }
+    .form-group input:focus { border-color: var(--gold-dark); }
+    .modal-actions { display: flex; gap: 0.6rem; margin-top: 0.5rem; }
+    .modal-actions .btn-primary { flex: 1; justify-content: center; padding: 12px; font-size: 0.95rem; }
+    .modal-actions .btn-secondary { flex: 0.55; justify-content: center; padding: 12px; }
+    .result-box { margin-top: 1rem; padding: 0.9rem 1rem; border-radius: 12px; font-size: 0.88rem; display: none; word-break: break-all; }
+    .result-box.show { display: block; }
+    .result-box.success { background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); color: #6ee7b7; }
+    .result-box.error { background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); color: #fca5a5; }
+    .result-box a { color: var(--gold); font-weight: 700; text-decoration: underline; }
+    .verify-box { margin-top: 0.6rem; padding: 0.6rem 0.8rem; background: rgba(0,0,0,0.35); border-radius: 10px; font-size: 0.8rem; }
+    .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .security-note { max-width: 1280px; margin: 0 auto; padding: 0 1.25rem 1.5rem; }
+    .security-note-inner {
+      background: rgba(239, 68, 68, 0.08); border: 1.5px solid rgba(239, 68, 68, 0.25);
+      border-radius: 14px; padding: 1rem 1.25rem; font-size: 0.82rem; color: #fca5a5;
+    }
+
+    /* ARTICLE MODAL */
+    .article-body { font-size: 0.92rem; color: #cbd5e1; line-height: 1.7; }
+    .article-body h4 { color: #fff; margin: 1rem 0 0.5rem; font-size: 1.05rem; }
+    .article-body p { margin-bottom: 0.75rem; }
+    .article-body ul { padding-left: 1.25rem; margin-bottom: 0.75rem; }
+    .article-body li { margin-bottom: 0.35rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="#hero" class="header-logo"><span>🔒</span> Locket Gold VN</a>
+      <nav class="desktop-nav">
+        <a class="nav-link active" href="#hero">TRANG CHỦ</a>
+        <a class="nav-link gold-highlight" href="#pricing">LÊN GOLD <span class="gold-badge">HOT</span></a>
+        <a class="nav-link" href="#uytin">UY TÍN</a>
+        <a class="nav-link" href="#baiviet">BÀI VIẾT</a>
+        <a class="nav-link" href="#huongdan">HƯỚNG DẪN</a>
+        <a class="nav-link" href="#ctv">CỘNG TÁC VIÊN</a>
+        <a class="nav-link" href="#lienhe">LIÊN HỆ</a>
+      </nav>
+      <div class="header-account">
+        <div><small>Tài khoản CTV</small><strong id="headerCtvName">Đang tải…</strong></div>
+        <a href="#pricing">Cấp Gold</a>
+      </div>
+      <button class="mobile-btn" id="menuOpen" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-content">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+        <strong style="font-size:1.1rem">Menu</strong>
+        <button class="mobile-btn" id="menuClose">✕</button>
+      </div>
+      <a class="drawer-link" href="#hero" data-close>🏠 TRANG CHỦ</a>
+      <a class="drawer-link gold" href="#pricing" data-close>👑 LÊN GOLD</a>
+      <a class="drawer-link" href="#uytin" data-close>⭐ UY TÍN</a>
+      <a class="drawer-link" href="#baiviet" data-close>📝 BÀI VIẾT</a>
+      <a class="drawer-link" href="#huongdan" data-close>📖 HƯỚNG DẪN</a>
+      <a class="drawer-link" href="#ctv" data-close>🤝 CỘNG TÁC VIÊN</a>
+      <a class="drawer-link" href="#lienhe" data-close>📞 LIÊN HỆ</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div>
+      <div class="hero-eyebrow">🕵️ TRANG WEB NÂNG CẤP LOCKET GOLD CHÍNH THỨC</div>
+      <h1>Locket Gold Web<br/>Chỉ Cần Username!</h1>
+      <p class="hero-desc">Nâng cấp Locket Gold trực tiếp trên trình duyệt Web. Tự động, nhanh chóng và hoạt động độc lập không cần phần mềm hỗ trợ.</p>
+      <div class="hero-metrics">
+        <div class="metric gold">💰 Giá từ 60.000đ</div>
+        <span style="color:#475569">•</span>
+        <div class="metric green">⏱ Thường kích hoạt trong ~30s</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary">🔍 NÂNG CẤP LOCKET GOLD →</a>
+        <a href="#huongdan" class="btn-secondary">Xem cách hoạt động</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-badge">✨ Chỉ cần Username là xong!</div>
+        <div class="hero-card-icon">👑</div>
+        <div class="hero-points">
+          <div class="hero-point"><span class="check">✓</span> Uy tín nói lên thương hiệu</div>
+          <div class="hero-point"><span class="check">✓</span> Chỉ cần đúng Username Locket</div>
+          <div class="hero-point"><span class="check">✓</span> Username dùng để kiểm tra và kích hoạt tài khoản</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="section" id="benefits">
+    <div class="section-head">
+      <span class="section-label">ƯU ĐIỂM VƯỢT TRỘI</span>
+      <h2 class="section-title">Tại Sao Nên Lên Gold Trực Tiếp Trên Web?</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">📱</div>
+        <div class="benefit-tag" style="color:#ef4444">TIỆN LỢI</div>
+        <h3>KHÔNG CẦN TẢI APP</h3>
+        <p>Nâng cấp Locket Gold trực tiếp trên trình duyệt Web, không lo app thứ 3 hay tốn bộ nhớ điện thoại.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🌐</div>
+        <div class="benefit-tag" style="color:#fbbf24">ỔN ĐỊNH</div>
+        <h3>KHÔNG CÀI VPN</h3>
+        <p>Không cần can thiệp cấu hình VPN rườm rà. Lướt web, nghe nhạc, chơi game mượt mà không lo bị chặn mạng.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">👤</div>
+        <div class="benefit-tag" style="color:#3b82f6">BẢO MẬT</div>
+        <h3>CHỈ CẦN USERNAME</h3>
+        <p>Chỉ cần nhập chính xác Username Locket của bạn. Cam kết không bao giờ yêu cầu mật khẩu.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔒</div>
+        <div class="benefit-tag" style="color:#10b981">CAM KẾT</div>
+        <h3>KHÔNG YÊU CẦU MẬT KHẨU</h3>
+        <p>Hệ thống đối soát tự động qua API. Username được sử dụng để kiểm tra và kích hoạt tài khoản an toàn.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing" style="max-width:1080px">
+    <div class="section-head">
+      <span class="section-label">BẢNG GIÁ ƯU ĐÃI</span>
+      <h2 class="section-title">Chọn Gói Lên Gold Phù Hợp</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div>
+          <h3>GÓI 1 NĂM CÓ DNS (iOS)</h3>
+          <div class="price-amount"><span class="num">60.000đ</span><span class="unit">/ 1 Năm</span></div>
+          <div class="features">
+            <div class="feature"><span class="feature-dot">✓</span> Dành cho thiết bị iPhone / iOS</div>
+            <div class="feature"><span class="feature-dot">✓</span> Nâng cấp tự động chỉ bằng Username</div>
+            <div class="feature"><span class="feature-dot">✓</span> Mở khóa icon Locket Vàng hoàng gia</div>
+            <div class="feature"><span class="feature-dot">✓</span> Đăng ảnh chất lượng cao HD siêu nét</div>
+            <div class="feature"><span class="feature-dot">✓</span> Bảo hành kích hoạt 1 đổi 1</div>
+          </div>
+        </div>
+        <button class="btn-plan" data-days="365" data-name="Gói 1 Năm (iOS)">👑 CHỌN GÓI NÀY</button>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">👑 KHUYÊN DÙNG</div>
+        <div>
+          <h3>GÓI VĨNH VIỄN (iOS)</h3>
+          <div class="price-amount"><span class="num">149.000đ</span><span class="unit">/ Trọn đời</span></div>
+          <div class="features">
+            <div class="feature"><span class="feature-dot">✓</span> Dành cho thiết bị iPhone / iOS</div>
+            <div class="feature"><span class="feature-dot">✓</span> Nâng cấp tự động chỉ bằng Username</div>
+            <div class="feature"><span class="feature-dot">✓</span> Sử dụng Locket Gold vĩnh viễn trọn đời</div>
+            <div class="feature"><span class="feature-dot">✓</span> Huy hiệu Gold rực rỡ</div>
+            <div class="feature"><span class="feature-dot">✓</span> Toàn bộ tính năng cao cấp mới nhất</div>
+            <div class="feature"><span class="feature-dot">✓</span> Bảo hành vĩnh viễn 100% trọn đời</div>
+          </div>
+        </div>
+        <button class="btn-plan featured" data-days="" data-name="Gói Vĩnh Viễn (iOS)">👑 CHỌN GÓI NÀY</button>
+      </div>
+      <div class="price-card">
+        <div>
+          <h3>GÓI VĨNH VIỄN (ANDROID)</h3>
+          <div class="price-amount"><span class="num">180.000đ</span><span class="unit">/ Trọn đời</span></div>
+          <div class="features">
+            <div class="feature"><span class="feature-dot">✓</span> Bản cài đặt riêng cho điện thoại Android</div>
+            <div class="feature"><span class="feature-dot">✓</span> Mở khóa full tính năng Locket Gold cao cấp</div>
+            <div class="feature"><span class="feature-dot">✓</span> Kỹ thuật viên Admin hỗ trợ cài đặt 1-1</div>
+            <div class="feature"><span class="feature-dot">✓</span> Bảo hành uy tín, hỗ trợ 24/7</div>
+            <div class="feature"><span class="feature-dot">✓</span> Kích hoạt nhanh chóng qua Zalo / Telegram</div>
+          </div>
+        </div>
+        <button class="btn-plan" data-days="" data-name="Gói Vĩnh Viễn (Android)">👑 CHỌN GÓI NÀY</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== UY TÍN (đầy đủ, đúng anchor) ========== -->
+  <section class="section" id="uytin">
+    <div class="section-head">
+      <span class="section-label">UY TÍN THƯƠNG HIỆU</span>
+      <h2 class="section-title">Cam Kết Minh Bạch & An Toàn</h2>
+      <p class="section-desc">Hệ thống hoạt động tự động 24/7, chỉ dùng Username — không bao giờ hỏi mật khẩu.</p>
+    </div>
+    <div class="uytin-grid">
+      <div class="uytin-card"><div class="num" id="statCredits">—</div><div class="label">Lượt CTV còn lại</div></div>
+      <div class="uytin-card"><div class="num">24/7</div><div class="label">Hỗ trợ không ngừng</div></div>
+      <div class="uytin-card"><div class="num">~30s</div><div class="label">Thời gian kích hoạt</div></div>
+      <div class="uytin-card"><div class="num">100%</div><div class="label">Không cần mật khẩu</div></div>
+    </div>
+    <div class="uytin-list">
+      <div class="uytin-item">
+        <div class="icon">🔐</div>
+        <div>
+          <h4>Bảo mật tuyệt đối</h4>
+          <p>Chỉ nhận Username Locket. Không lưu mật khẩu, OTP hay thông tin đăng nhập. Hệ thống đối soát qua API chính thức.</p>
+        </div>
+      </div>
+      <div class="uytin-item">
+        <div class="icon">⚡</div>
+        <div>
+          <h4>Kích hoạt siêu nhanh</h4>
+          <p>Sau khi cấp thành công, khách nhận link xác thực (verifyUrl). Mở bằng Safari trên máy đã cài Profile DNS — thường xong trong 30 giây.</p>
+        </div>
+      </div>
+      <div class="uytin-item">
+        <div class="icon">🛡️</div>
+        <div>
+          <h4>Bảo hành 1 đổi 1</h4>
+          <p>Nhập nhầm username? Liên hệ hủy Gold (hoàn lượt) và cấp lại đúng tài khoản. Cam kết hỗ trợ đến khi xong.</p>
+        </div>
+      </div>
+      <div class="uytin-item">
+        <div class="icon">📋</div>
+        <div>
+          <h4>Minh bạch giao dịch</h4>
+          <p>Mỗi lần cấp đều có lịch sử. Có thể tra cứu trạng thái Gold, hủy hoặc gia hạn theo chính sách bảo hành.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BÀI VIẾT ========== -->
+  <section class="section" id="baiviet">
+    <div class="section-head">
+      <span class="section-label">BÀI VIẾT & HƯỚNG DẪN</span>
+      <h2 class="section-title">Kiến Thức Locket Gold</h2>
+      <p class="section-desc">Tổng hợp bài viết hữu ích về Locket Gold, cách cài Profile DNS và mẹo sử dụng an toàn.</p>
+    </div>
+    <div class="posts-grid">
+      <article class="post-card" data-article="1">
+        <div class="post-thumb">⚖️</div>
+        <div class="post-body">
+          <div class="post-tag">TIN TỨC</div>
+          <h3>Nên mua Locket Gold 1 năm hay vĩnh viễn? So sánh chi tiết</h3>
+          <p>So sánh gói 1 năm và vĩnh viễn: chi phí, đối tượng phù hợp, ví dụ tính hòa vốn và cách chọn gói đúng nhu cầu.</p>
+          <div class="post-meta">17/09/2026 · 7 phút đọc · 78 lượt xem</div>
+        </div>
+      </article>
+      <article class="post-card" data-article="2">
+        <div class="post-thumb">🔧</div>
+        <div class="post-body">
+          <div class="post-tag">TIN TỨC</div>
+          <h3>Khắc phục lỗi Locket Gold: Thanh toán nhưng chưa lên Gold</h3>
+          <p>Nguyên nhân thường gặp và cách xử lý nhanh khi đã thanh toán mà tài khoản vẫn chưa hiện huy hiệu vàng.</p>
+          <div class="post-meta">17/09/2026 · 2 phút đọc · 54 lượt xem</div>
+        </div>
+      </article>
+      <article class="post-card" data-article="3">
+        <div class="post-thumb">🔐</div>
+        <div class="post-body">
+          <div class="post-tag">TIN TỨC</div>
+          <h3>Nâng cấp Locket Gold có an toàn không? Có cần mật khẩu?</h3>
+          <p>Giải thích No DNS, vì sao không cần mật khẩu, quy trình nâng cấp an toàn và những lưu ý trước khi thanh toán.</p>
+          <div class="post-meta">17/09/2026 · 6 phút đọc · 42 lượt xem</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" id="reviews">
+    <div class="section-head">
+      <span class="section-label">ĐÁNH GIÁ THỰC TẾ</span>
+      <h2 class="section-title">Khách Hàng Nói Gì Về Dịch Vụ?</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div class="stars">★★★★★</div><span class="review-tag">Gói Vĩnh Viễn</span></div>
+        <p class="review-text">"Lên Locket Gold siêu nhanh luôn! Nhập đúng username là tầm 30s sau có Gold ngay, không cần xin mật khẩu gì hết siêu an tâm."</p>
+        <div class="review-author"><div class="avatar">M</div><div><div class="author-name">Minh Anh</div><div class="author-user">@minhanh_locket</div></div></div>
+      </div>
+      <div class="review-card">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div class="stars">★★★★★</div><span class="review-tag">Gói Vĩnh Viễn</span></div>
+        <p class="review-text">"Giao diện đẹp thực sự! Quét mã xong là tài khoản lên Gold ngay, không cần cài app hay DNS gì cả."</p>
+        <div class="review-author"><div class="avatar">H</div><div><div class="author-name">Hoàng Nam</div><div class="author-user">@nam_conan</div></div></div>
+      </div>
+      <div class="review-card">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div class="stars">★★★★★</div><span class="review-tag">Gói 1 Năm</span></div>
+        <p class="review-text">"Uy tín 100% nha mọi người. Mình dùng được hơn 2 tháng rồi tài khoản vẫn có huy hiệu Gold đẹp mắt, không bị lỗi gì."</p>
+        <div class="review-author"><div class="avatar">B</div><div><div class="author-name">Bảo Ngọc</div><div class="author-user">@ngoc_kawaii</div></div></div>
+      </div>
+      <div class="review-card">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div class="stars">★★★★★</div><span class="review-tag">Gói 1 Năm</span></div>
+        <p class="review-text">"Lên Gold siêu nhanh, chưa đầy 1 phút. Cảm ơn shop, vừa rẻ vừa uy tín!"</p>
+        <div class="review-author"><div class="avatar">N</div><div><div class="author-name">Nguyễn Kiên</div><div class="author-user">@kiennguyen9x</div></div></div>
+      </div>
+      <div class="review-card">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div class="stars">★★★★★</div><span class="review-tag">Gói Vĩnh Viễn</span></div>
+        <p class="review-text">"Xịn lắm mấy bà ơi. Icon vàng nhìn sang chảnh hẳn, dùng sướng tay."</p>
+        <div class="review-author"><div class="avatar">T</div><div><div class="author-name">Trang Thu</div><div class="author-user">@trang_thu99</div></div></div>
+      </div>
+      <div class="review-card">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div class="stars">★★★★★</div><span class="review-tag">Gói Vĩnh Viễn</span></div>
+        <p class="review-text">"Đã check legit nhé anh em. Chuyển khoản xong là tài khoản tự nhảy sang giao diện Gold luôn, không cần cung cấp mật khẩu."</p>
+        <div class="review-author"><div class="avatar">L</div><div><div class="author-name">Lê Minh Thành</div><div class="author-user">@thanh.le2004</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HUONG DAN -->
+  <section class="section" id="huongdan">
+    <div class="section-head">
+      <span class="section-label">HƯỚNG DẪN NÂNG CẤP</span>
+      <h2 class="section-title">Chỉ 4 Bước Là Có Gold</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Chọn gói phù hợp</h3>
+        <p>Chọn gói 1 năm hoặc vĩnh viễn, iOS hoặc Android tùy thiết bị bạn đang dùng.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Nhập Username Locket</h3>
+        <p>Chỉ cần Username (hoặc UID). Không bao giờ yêu cầu mật khẩu, OTP hay thông tin đăng nhập.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Cài Profile DNS</h3>
+        <p>Tải Profile tại <a href="https://tai.nodns.vn" target="_blank" style="color:var(--gold)">tai.nodns.vn</a> và cài trên máy (iOS: Cài đặt → Profile).</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>Mở link xác thực</h3>
+        <p>Sau khi cấp thành công, mở <strong>verifyUrl</strong> bằng <strong>Safari</strong>. Tài khoản lên Gold trong ~30 giây.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CỘNG TÁC VIÊN ========== -->
+  <section class="section" id="ctv">
+    <div class="section-head">
+      <span class="section-label">CỘNG TÁC VIÊN</span>
+      <h2 class="section-title">Trở Thành CTV Locket Gold</h2>
+      <p class="section-desc">Nhận API key, cấp Gold cho khách, theo dõi lượt còn lại và lịch sử giao dịch.</p>
+    </div>
+    <div class="ctv-box">
+      <h3>🤝 Chương trình Cộng tác viên</h3>
+      <p>Bạn đã có tài khoản CTV với API key. Dùng trang này để cấp Gold trực tiếp cho khách: chọn gói → nhập Username → nhận verifyUrl gửi khách.</p>
+      <div class="ctv-perks">
+        <span class="ctv-perk">API tự động 24/7</span>
+        <span class="ctv-perk">Chỉ cần Username</span>
+        <span class="ctv-perk">Hoàn lượt khi hủy</span>
+        <span class="ctv-perk">Theo dõi số lượt realtime</span>
+      </div>
+      <a href="#pricing" class="btn-primary">👑 Bắt đầu cấp Gold</a>
+      <p style="margin-top:1rem;font-size:0.85rem;color:var(--muted)">Lượt còn lại: <strong id="ctvCredits" style="color:var(--gold)">—</strong></p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="max-width:840px">
+    <div class="section-head">
+      <span class="section-label">HỎI ĐÁP PHỔ BIẾN</span>
+      <h2 class="section-title">Câu Hỏi Thường Gặp</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Nâng cấp Locket Gold có cần mật khẩu tài khoản không? <span>▾</span></summary>
+        <div class="faq-answer"><strong>Không.</strong> Hệ thống chỉ sử dụng đúng Username Locket để kiểm tra và kích hoạt. Bạn không cần cung cấp mật khẩu, mã OTP hay thông tin đăng nhập.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Sau khi cấp thì mất bao lâu tài khoản được kích hoạt Gold? <span>▾</span></summary>
+        <div class="faq-answer">Thông thường trong khoảng <strong>30 giây</strong> sau khi khách mở verifyUrl bằng Safari (đã cài Profile). Cao điểm có thể lâu hơn một chút.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Gói có dùng được trên cả iPhone và Android không? <span>▾</span></summary>
+        <div class="faq-answer">Có. Chọn đúng gói iOS hoặc Android tùy thiết bị đang dùng để được kích hoạt và hỗ trợ chính xác.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Khách cần cài Profile DNS không? <span>▾</span></summary>
+        <div class="faq-answer">Có. Cài Profile tại <a href="https://tai.nodns.vn" target="_blank">tai.nodns.vn</a>, rồi mở link xác thực bằng <strong>Safari</strong>.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Nếu nhập nhầm Username thì sao? <span>▾</span></summary>
+        <div class="faq-answer">Liên hệ hỗ trợ để hủy Gold (hoàn 1 lượt) rồi cấp lại đúng Username.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Gặp sự cố thì liên hệ ở đâu? <span>▾</span></summary>
+        <div class="faq-answer">Vào mục <a href="#lienhe">Liên hệ</a> hoặc bấm nút 💬 góc phải màn hình. Hỗ trợ 24/7.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ========== LIÊN HỆ (đúng anchor #lienhe) ========== -->
+  <section class="section" id="lienhe">
+    <div class="section-head">
+      <span class="section-label">LIÊN HỆ HỖ TRỢ</span>
+      <h2 class="section-title">Chúng Tôi Luôn Sẵn Sàng 24/7</h2>
+      <p class="section-desc">Hỗ trợ kích hoạt, bảo hành, hướng dẫn cài Profile và giải đáp mọi thắc mắc.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="icon">📥</div>
+        <h3>Tải Profile DNS</h3>
+        <p>Bắt buộc cài trước khi mở link xác thực (verifyUrl) bằng Safari.</p>
+        <a href="https://tai.nodns.vn" target="_blank" rel="noopener" class="btn-primary">Tải ngay →</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">👑</div>
+        <h3>Cấp Locket Gold</h3>
+        <p>Chọn gói, nhập Username, nhận link xác thực gửi khách trong vài giây.</p>
+        <a href="#pricing" class="btn-primary">Chọn gói →</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">🛡️</div>
+        <h3>Bảo hành & Hỗ trợ</h3>
+        <p>Nhập nhầm username, Gold chưa hiện, hoặc cần hủy hoàn lượt — liên hệ ngay.</p>
+        <a href="#uytin" class="btn-secondary" style="justify-content:center">Xem cam kết uy tín</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;color:var(--muted);font-size:0.9rem">
+      <p>Đơn vị vận hành: <strong style="color:#fff">Locket Gold VN</strong></p>
+      <p style="margin-top:0.35rem">Hệ thống hoạt động tự động 24/7 · Không trực thuộc Locket LLC</p>
+    </div>
+  </section>
+
+  <div class="security-note">
+    <div class="security-note-inner">
+      <strong>⚠️ Lưu ý bảo mật:</strong> API key đang nằm trong JS (demo). Khi deploy công khai hãy chuyển key sang backend/proxy.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="header-logo" style="margin-bottom:0.5rem"><span>🔒</span> Locket Gold VN</div>
+        <p>Hệ thống cung cấp dịch vụ nâng cấp Locket Gold nhanh chóng, an toàn và bảo mật hoàn toàn tự động 24/7.</p>
+        <div class="footer-contact">
+          <span>🛡️ Đơn vị vận hành: <strong>Locket Gold VN</strong></span>
+          <span>✅ Hệ thống hoạt động 24/7</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Dịch Vụ & Hỗ Trợ</div>
+        <a href="#pricing">Nâng cấp Locket Gold</a>
+        <a href="#pricing">Bảng giá dịch vụ</a>
+        <a href="#huongdan">Hướng dẫn nâng cấp</a>
+        <a href="#uytin">Kiểm tra uy tín</a>
+        <a href="#baiviet">Bài viết</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Chính Sách & Liên hệ</div>
+        <a href="#faq">Chính sách hoàn tiền</a>
+        <a href="#faq">Điều kiện bảo hành</a>
+        <a href="#ctv">Cộng tác viên</a>
+        <a href="#lienhe">Liên hệ hỗ trợ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Locket Gold VN. All rights reserved. Không trực thuộc Locket LLC.</div>
+  </footer>
+
+  <div class="float-bar">
+    <div>
+      <div style="font-size:0.85rem;font-weight:900;color:var(--gold)">NÂNG CẤP LOCKET GOLD 100% WEB</div>
+      <div style="font-size:0.72rem;color:var(--muted)">Không cần App • Kích hoạt 30 giây</div>
+    </div>
+    <a href="#pricing" class="btn-primary">👑 LÊN GOLD</a>
+  </div>
+
+  <button class="float-contact" id="btnContact" title="Liên hệ hỗ trợ 24/7">💬</button>
+
+  <div class="sale-popup" id="salePopup">
+    <div class="sale-card">
+      <div class="sale-avatar">🔒<span class="sale-live"></span></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span class="sale-badge">Giao dịch đã xác thực</span>
+          <span class="sale-time" id="saleTime">vừa xong</span>
+        </div>
+        <p class="sale-msg"><strong id="saleUser">@user***</strong> vừa nâng cấp <span id="salePlan">Gói 1 Năm</span></p>
+      </div>
+      <button class="sale-close" id="saleClose">×</button>
+    </div>
+  </div>
+
+  <!-- MODAL GRANT -->
+  <div class="modal-overlay" id="grantModal">
+    <div class="modal">
+      <h3>👑 Cấp Locket Gold</h3>
+      <div class="modal-plan" id="modalPlanName">Gói …</div>
+      <div class="form-group">
+        <label>Username / UID Locket *</label>
+        <input type="text" id="modalUser" placeholder="vd: minhanh_locket" autocomplete="off" />
+      </div>
+      <div class="form-group">
+        <label>Ghi chú (tuỳ chọn)</label>
+        <input type="text" id="modalNote" placeholder="Khách mua gói …" />
+      </div>
+      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.85rem">
+        Sau khi cấp sẽ hiện <strong style="color:var(--gold)">link xác thực</strong>. Gửi khách mở bằng Safari (đã cài Profile tại <a href="https://tai.nodns.vn" target="_blank" style="color:var(--gold)">tai.nodns.vn</a>).
+      </p>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="modalClose">Huỷ</button>
+        <button class="btn-primary" id="modalGrant"><span id="modalGrantText">🚀 CẤP NGAY</span></button>
+      </div>
+      <div class="result-box" id="modalResult"></div>
+    </div>
+  </div>
+
+  <!-- MODAL ARTICLE -->
+  <div class="modal-overlay" id="articleModal">
+    <div class="modal" style="max-width:520px">
+      <h3 id="articleTitle">Bài viết</h3>
+      <div class="article-body" id="articleBody"></div>
+      <div class="modal-actions" style="margin-top:1.25rem">
+        <button class="btn-secondary" id="articleClose" style="flex:1">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'https://ctv.nodns.vn/api/v1';
+    const API_KEY  = 'ctv_key_1786446539520_cftas0';
+    let selectedDays = null, selectedPlanName = '';
+
+    async function api(method, path, body = null) {
+      const opts = { method, headers: { 'Content-Type': 'application/json', 'x-api-key': API_KEY } };
+      if (body) opts.body = JSON.stringify(body);
+      const res = await fetch(API_BASE + path, opts);
+      let data; try { data = await res.json(); } catch { data = { message: res.statusText }; }
+      if (!res.ok) throw new Error(data?.message || data?.error || ('HTTP ' + res.status));
+      return data;
+    }
+
+    async function loadMe() {
+      try {
+        const res = await api('GET', '/me');
+        const d = res.data || res;
+        const credits = d.credits ?? d.remaining ?? d.quota ?? '—';
+        const name = d.name || d.username || d.email || 'CTV';
+        document.getElementById('statCredits').textContent = credits;
+        document.getElementById('ctvCredits').textContent = credits;
+        document.getElementById('headerCtvName').textContent = name + ' · ' + credits + ' lượt';
+      } catch (e) {
+        document.getElementById('statCredits').textContent = '—';
+        document.getElementById('ctvCredits').textContent = '—';
+        document.getElementById('headerCtvName').textContent = 'Lỗi API';
+      }
+    }
+    loadMe();
+
+    document.getElementById('menuOpen').onclick = () => document.getElementById('mobileDrawer').classList.add('open');
+    document.getElementById('menuClose').onclick = () => document.getElementById('mobileDrawer').classList.remove('open');
+    document.querySelectorAll('[data-close]').forEach(a => a.onclick = () => document.getElementById('mobileDrawer').classList.remove('open'));
+
+    document.querySelectorAll('.btn-plan').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedDays = btn.dataset.days === '' ? null : parseInt(btn.dataset.days, 10);
+        selectedPlanName = btn.dataset.name;
+        document.getElementById('modalPlanName').textContent = selectedPlanName + (selectedDays ? ' · ' + selectedDays + ' ngày' : ' · Vĩnh viễn');
+        document.getElementById('modalUser').value = '';
+        document.getElementById('modalNote').value = selectedPlanName;
+        document.getElementById('modalResult').className = 'result-box';
+        document.getElementById('modalResult').innerHTML = '';
+        document.getElementById('grantModal').classList.add('open');
+        setTimeout(() => document.getElementById('modalUser').focus(), 100);
+      });
+    });
+    document.getElementById('modalClose').onclick = () => document.getElementById('grantModal').classList.remove('open');
+    document.getElementById('grantModal').addEventListener('click', e => { if (e.target.id === 'grantModal') document.getElementById('grantModal').classList.remove('open'); });
+
+    document.getElementById('modalGrant').addEventListener('click', async () => {
+      const user = document.getElementById('modalUser').value.trim();
+      const note = document.getElementById('modalNote').value.trim();
+      const resultEl = document.getElementById('modalResult');
+      const btn = document.getElementById('modalGrant');
+      const textEl = document.getElementById('modalGrantText');
+      if (!user) { resultEl.className = 'result-box show error'; resultEl.innerHTML = 'Vui lòng nhập Username / UID.'; return; }
+      const body = { user };
+      if (selectedDays) body.days = selectedDays;
+      if (note) body.note = note;
+      btn.disabled = true;
+      textEl.innerHTML = '<span class="spinner"></span> Đang cấp…';
+      resultEl.className = 'result-box';
+      try {
+        const res = await api('POST', '/grant', body);
+        const d = res.data || res;
+        const verifyUrl = d.verifyUrl || d.verify_url || d.link || '';
+        let html = '<strong>✅ Cấp thành công!</strong><br/>User: <strong>@' + user + '</strong>';
+        html += selectedDays ? ' · ' + selectedDays + ' ngày' : ' · Vĩnh viễn';
+        if (verifyUrl) html += '<div class="verify-box">🔗 Link xác thực:<br/><a href="' + verifyUrl + '" target="_blank" rel="noopener">' + verifyUrl + '</a></div>';
+        else html += '<br/><span style="opacity:0.85">Không có verifyUrl.</span>';
+        resultEl.className = 'result-box show success';
+        resultEl.innerHTML = html;
+        loadMe();
+      } catch (e) {
+        resultEl.className = 'result-box show error';
+        resultEl.innerHTML = '❌ ' + e.message;
+      } finally {
+        btn.disabled = false;
+        textEl.textContent = '🚀 CẤP NGAY';
+      }
+    });
+
+    // Contact float → scroll to #lienhe
+    document.getElementById('btnContact').onclick = () => {
+      document.getElementById('lienhe').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    // Articles
+    const ARTICLES = {
+      1: {
+        title: '⚖️ Nên mua Locket Gold 1 năm hay vĩnh viễn?',
+        body: `<p>Khi nâng cấp <strong>Locket Gold</strong>, câu hỏi phổ biến nhất là: <strong>nên chọn gói 1 năm hay vĩnh viễn?</strong></p>
+<p>Nếu chỉ muốn trải nghiệm trong thời gian nhất định, gói 1 năm hợp lý hơn. Nếu dùng Locket lâu dài và không muốn gia hạn nhiều lần, gói vĩnh viễn đáng cân nhắc hơn.</p>
+<h4>1. Locket Gold No DNS là gì?</h4>
+<p>Hình thức nâng cấp qua hệ thống trực tuyến, <strong>không cần tự cài VPN, DNS Profile</strong> hay app bên thứ ba. Chỉ cần cung cấp đúng <strong>Username Locket (@username)</strong>. <strong>Không yêu cầu mật khẩu</strong>.</p>
+<h4>2. Gói 1 năm</h4>
+<p><strong>Ưu điểm:</strong> chi phí ban đầu thấp hơn; phù hợp người mới; dễ cân nhắc lại sau một thời gian.</p>
+<p><strong>Phù hợp nếu:</strong> mới dùng Gold; muốn tối ưu chi phí trước mắt; chưa chắc dùng lâu dài; không ngại gia hạn khi hết hạn.</p>
+<h4>3. Gói vĩnh viễn</h4>
+<p><strong>Ưu điểm:</strong> không cần gia hạn hàng năm; tiện cho người dùng thường xuyên; có thể tiết kiệm hơn về lâu dài.</p>
+<p><strong>Phù hợp nếu:</strong> Locket là app dùng thường xuyên; tài khoản chính dùng lâu dài; không muốn nhớ lịch gia hạn.</p>
+<h4>4. So sánh nhanh</h4>
+<ul>
+<li><strong>Thời hạn:</strong> 1 năm có hạn · Vĩnh viễn dài hạn theo điều kiện gói</li>
+<li><strong>Chi phí ban đầu:</strong> 1 năm thấp hơn · Vĩnh viễn cao hơn</li>
+<li><strong>Gia hạn:</strong> 1 năm có · Vĩnh viễn thường không cần định kỳ</li>
+<li><strong>Trải nghiệm thử:</strong> 1 năm rất phù hợp · Vĩnh viễn ít cần thiết hơn</li>
+</ul>
+<h4>5. Nên chọn gói nào?</h4>
+<p><strong>Chọn 1 năm</strong> nếu mới dùng, muốn giảm chi phí ban đầu hoặc chưa chắc dùng lâu.</p>
+<p><strong>Chọn vĩnh viễn</strong> nếu dùng thường xuyên, tài khoản ổn định và không muốn gia hạn nhiều lần.</p>
+<h4>6. Ví dụ tính hòa vốn</h4>
+<p>Gói 1 năm giá A, vĩnh viễn giá B → số năm hòa vốn ≈ <strong>B ÷ A</strong>. Ví dụ vĩnh viễn khoảng 2–3 lần gói 1 năm thì ai dùng lâu hơn khoảng đó có thể chọn dài hạn. Giá thực tế xem tại bảng giá trên trang.</p>
+<h4>7. Vì sao nhiều người chọn No DNS?</h4>
+<ul>
+<li>Không cần cài VPN / DNS</li>
+<li>Không cần tải app thứ 3</li>
+<li>Không cung cấp mật khẩu, OTP, Apple ID, Google…</li>
+<li>Thanh toán / kích hoạt nhanh</li>
+</ul>
+<h4>8. Các bước nâng cấp</h4>
+<ol>
+<li>Chọn gói phù hợp trên trang</li>
+<li>Nhập đúng Username Locket</li>
+<li>Hoàn tất thanh toán / cấp Gold</li>
+<li>Nhận verifyUrl → cài Profile (nếu cần) → mở bằng Safari</li>
+<li>Mở lại app Locket kiểm tra huy hiệu Gold</li>
+</ol>
+<h4>Kết luận</h4>
+<p>Mới trải nghiệm → <strong>gói 1 năm</strong>. Dùng lâu dài, không muốn gia hạn → <strong>gói vĩnh viễn</strong>. Chọn theo nhu cầu thực tế và kiểm tra kỹ giá, thời hạn trước khi thanh toán.</p>
+<p><a href="#pricing" style="color:var(--gold);font-weight:700">👉 Xem bảng giá &amp; chọn gói</a></p>`
+      },
+      2: {
+        title: '🔧 Thanh toán nhưng chưa lên Gold?',
+        body: `<p>Bạn đã thanh toán Locket Gold nhưng tài khoản vẫn chưa hiện huy hiệu vàng? Đừng lo — nguyên nhân thường đến từ nhập sai Username, hệ thống chưa đối soát xong hoặc app Locket chưa cập nhật trạng thái.</p>
+<h4>Cách khắc phục nhanh</h4>
+<ul>
+<li><strong>Kiểm tra lại Username:</strong> Đảm bảo đã nhập đúng @username của tài khoản cần nâng cấp.</li>
+<li><strong>Mở lại app Locket:</strong> Tắt hoàn toàn ứng dụng rồi mở lại để cập nhật trạng thái.</li>
+<li><strong>Kiểm tra thanh toán:</strong> Giao dịch đã thành công và đúng nội dung chuyển khoản.</li>
+<li><strong>Không mua lại đơn mới:</strong> Nếu đã thanh toán thành công, kiểm tra trạng thái đơn trước để tránh trùng.</li>
+<li><strong>Liên hệ hỗ trợ:</strong> Nếu chờ một lúc vẫn chưa lên Gold, gửi thông tin giao dịch / Username để được kiểm tra.</li>
+</ul>
+<h4>Với hệ thống cấp qua API</h4>
+<p>Sau khi cấp thành công sẽ có <strong>verifyUrl</strong>. Khách cần:</p>
+<ol>
+<li>Cài Profile DNS tại <a href="https://tai.nodns.vn" target="_blank" style="color:var(--gold)">tai.nodns.vn</a></li>
+<li>Mở verifyUrl bằng <strong>Safari</strong> (không dùng Chrome / in-app browser)</li>
+<li>Đợi vài giây rồi mở lại Locket</li>
+</ol>
+<p><strong>Lưu ý:</strong> Không cung cấp mật khẩu, mã OTP hoặc mã xác minh đăng nhập cho bất kỳ ai.</p>
+<p><a href="#lienhe" style="color:var(--gold);font-weight:700">👉 Liên hệ hỗ trợ</a> · <a href="#pricing" style="color:var(--gold);font-weight:700">Cấp Gold</a></p>`
+      },
+      3: {
+        title: '🔐 Nâng cấp có an toàn không? Có cần mật khẩu?',
+        body: `<p>Trước khi nâng cấp, nhiều người băn khoăn: <strong>có an toàn không? Có cần đưa mật khẩu không?</strong></p>
+<p>Với giải pháp <strong>chỉ dùng Username + API</strong>, quy trình được thiết kế đơn giản, hạn chế can thiệp cài đặt thiết bị và <strong>không yêu cầu mật khẩu Locket</strong>.</p>
+<h4>1. No DNS / chỉ Username là gì?</h4>
+<p>Nâng cấp qua website/hệ thống, không bắt buộc người dùng tự cài VPN hay DNS phức tạp trên máy (tùy gói có thể cần Profile để mở verifyUrl). Chỉ cần <strong>Username Locket (@username)</strong> để định danh tài khoản.</p>
+<h4>2. Điểm nổi bật về an toàn</h4>
+<ul>
+<li><strong>Không cần mật khẩu</strong> — không gửi pass Locket, Apple ID, Google, OTP</li>
+<li><strong>Không cần app lạ</strong> — không cài APK/IPA nguồn không rõ</li>
+<li><strong>Quy trình rõ ràng</strong> — chọn gói → Username → kích hoạt / verifyUrl</li>
+</ul>
+<h4>3. Có cần mật khẩu không?</h4>
+<p><strong>Không.</strong> Bạn không nên cung cấp:</p>
+<ul>
+<li>Mật khẩu Locket</li>
+<li>Mật khẩu Apple ID / Google</li>
+<li>Mã OTP ngân hàng hoặc mã xác thực đăng nhập</li>
+<li>Thông tin đăng nhập email</li>
+</ul>
+<p>Nếu ai đó bắt buộc đưa mật khẩu chỉ để lên Gold — nên dừng và kiểm tra lại.</p>
+<h4>4. iPhone &amp; Android</h4>
+<p>Locket chạy trên cả hai nền tảng. Gold gắn với <strong>tài khoản</strong>; đăng nhập đúng tài khoản trên thiết bị tương thích để dùng tính năng tương ứng.</p>
+<h4>5. Có mất bạn bè / ảnh không?</h4>
+<p>Nâng cấp không tạo tài khoản mới. Dữ liệu gắn với tài khoản hiện tại (bạn bè, nội dung…) về nguyên tắc được giữ nguyên. Hãy nhập đúng Username và không chia sẻ mật khẩu.</p>
+<h4>6. Lưu ý trước khi nâng cấp</h4>
+<ul>
+<li>Kiểm tra Username đã chính xác</li>
+<li>Tài khoản Locket đang hoạt động bình thường</li>
+<li>Đọc rõ thời hạn / điều kiện gói</li>
+<li>Không đưa mật khẩu hay OTP cho bất kỳ ai</li>
+</ul>
+<h4>Kết luận</h4>
+<p>Cách an toàn: <strong>chỉ Username, không mật khẩu</strong>, làm theo hướng dẫn trên trang và mở verifyUrl đúng cách (nếu có). Có thắc mắc hãy vào mục Liên hệ.</p>
+<p><a href="#pricing" style="color:var(--gold);font-weight:700">👉 Nâng cấp Locket Gold</a></p>`
+      }
+        };
+
+    document.querySelectorAll('.post-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.article;
+        const a = ARTICLES[id];
+        if (!a) return;
+        document.getElementById('articleTitle').textContent = a.title;
+        document.getElementById('articleBody').innerHTML = a.body;
+        document.getElementById('articleModal').classList.add('open');
+      });
+    });
+    document.getElementById('articleClose').onclick = () => document.getElementById('articleModal').classList.remove('open');
+    document.getElementById('articleModal').addEventListener('click', e => { if (e.target.id === 'articleModal') document.getElementById('articleModal').classList.remove('open'); });
+
+    // Sale popup
+    const SALES = [
+      { customer: 'lepro2***', plan: 'Gói 1 Năm' },
+      { customer: 'nghiabu***', plan: 'IOS 1 NĂM' },
+      { customer: 'mua***', plan: 'Gói 1 Năm' },
+      { customer: 'nhatlo***', plan: 'IOS 1 NĂM' },
+      { customer: 'bj***', plan: 'Gói Vĩnh Viễn' },
+      { customer: 'be***', plan: 'Gói 1 Năm' }
+    ];
+    let saleIdx = 0;
+    function showSale() {
+      const s = SALES[saleIdx % SALES.length]; saleIdx++;
+      document.getElementById('saleUser').textContent = '@' + s.customer;
+      document.getElementById('salePlan').textContent = s.plan;
+      document.getElementById('saleTime').textContent = 'vừa xong';
+      const el = document.getElementById('salePopup');
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 5000);
+    }
+    document.getElementById('saleClose').onclick = () => document.getElementById('salePopup').classList.remove('show');
+    setTimeout(showSale, 3000);
+    setInterval(showSale, 12000);
+  </script>
+</body>
+</html>

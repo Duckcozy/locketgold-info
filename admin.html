@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin · Locket Gold VN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060a17; --card: rgba(15, 23, 42, 0.9); --border: rgba(255,255,255,0.1);
+      --gold: #fbbf24; --gold-dark: #f59e0b; --red: #ef4444; --green: #10b981;
+      --text: #f8fafc; --muted: #94a3b8; --font: 'Be Vietnam Pro', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font); background: var(--bg); color: var(--text);
+      min-height: 100vh; line-height: 1.55;
+      background-image: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(245,158,11,0.12), transparent);
+    }
+    a { color: var(--gold); }
+    button, input, select, textarea { font-family: inherit; }
+
+    .login-wrap {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .login-box {
+      width: 100%; max-width: 380px; background: var(--card);
+      border: 1.5px solid rgba(245,158,11,0.35); border-radius: 20px; padding: 2rem 1.75rem;
+    }
+    .login-box h1 { font-size: 1.35rem; font-weight: 900; margin-bottom: 0.35rem; }
+    .login-box p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.25rem; }
+
+    .hidden { display: none !important; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(6,10,23,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245,158,11,0.25);
+      padding: 0.85rem 1.25rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .topbar h1 {
+      font-size: 1.1rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), var(--red));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .topbar-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+
+    .tabs {
+      display: flex; gap: 0.4rem; margin-bottom: 1.5rem;
+      background: rgba(0,0,0,0.35); padding: 5px; border-radius: 14px; flex-wrap: wrap;
+    }
+    .tab-btn {
+      flex: 1; min-width: 120px; padding: 0.65rem 0.75rem; border: none; border-radius: 10px;
+      background: transparent; color: var(--muted); font-weight: 700; font-size: 0.85rem; cursor: pointer;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--gold-dark), var(--red)); color: #fff;
+    }
+
+    .panel {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 18px; padding: 1.5rem 1.35rem; margin-bottom: 1.25rem;
+    }
+    .panel h2 { font-size: 1.15rem; font-weight: 900; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .panel-desc { color: var(--muted); font-size: 0.85rem; margin: -0.5rem 0 1.15rem; }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; font-size: 0.75rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: rgba(6,10,23,0.75);
+      border: 1.5px solid rgba(255,255,255,0.12); border-radius: 12px;
+      padding: 0.75rem 1rem; color: var(--text); font-size: 0.95rem; outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--gold-dark);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      font-weight: 800; font-size: 0.9rem; padding: 0.7rem 1.2rem;
+      border-radius: 12px; border: none; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-dark), var(--red)); color: #fff;
+      box-shadow: 0 4px 16px rgba(239,68,68,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-1px); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff;
+    }
+    .btn-danger {
+      background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #fca5a5;
+    }
+    .btn-sm { padding: 0.45rem 0.85rem; font-size: 0.8rem; }
+    .btn-group { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+    .hint {
+      font-size: 0.8rem; color: var(--muted); margin-top: 0.35rem; line-height: 1.45;
+    }
+    .hint code {
+      background: rgba(0,0,0,0.35); padding: 1px 6px; border-radius: 4px; font-size: 0.78rem; color: #cbd5e1;
+    }
+
+    .toast {
+      position: fixed; bottom: 1.25rem; right: 1.25rem; z-index: 100;
+      background: rgba(15,23,42,0.98); border: 1px solid rgba(245,158,11,0.4);
+      border-radius: 12px; padding: 0.85rem 1.1rem; font-size: 0.88rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 320px;
+      animation: slideIn 0.3s ease;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .article-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .article-item {
+      background: rgba(6,10,23,0.5); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1rem 1.15rem;
+      display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; flex-wrap: wrap;
+    }
+    .article-item h3 { font-size: 0.95rem; font-weight: 800; margin-bottom: 0.25rem; }
+    .article-item .meta { font-size: 0.78rem; color: var(--muted); }
+    .article-item .actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
+
+    .preview-box {
+      margin-top: 1rem; padding: 1rem; border-radius: 12px;
+      background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25);
+      font-size: 0.85rem; color: #6ee7b7;
+    }
+    .preview-box strong { color: #a7f3d0; }
+    .empty { text-align: center; color: var(--muted); padding: 2rem 1rem; font-size: 0.9rem; }
+
+    .status-pill {
+      display: inline-block; font-size: 0.72rem; font-weight: 800;
+      padding: 2px 8px; border-radius: 9999px; margin-left: 6px;
+    }
+    .status-on { background: rgba(16,185,129,0.15); color: var(--green); }
+    .status-off { background: rgba(148,163,184,0.15); color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div class="login-wrap" id="loginScreen">
+    <div class="login-box">
+      <h1>🔐 Admin Panel</h1>
+      <p>Đăng nhập để quản lý SePay & bài viết. Mật khẩu mặc định: <code style="color:var(--gold)">admin123</code></p>
+      <div class="form-group">
+        <label>Mật khẩu admin</label>
+        <input type="password" id="loginPass" placeholder="Nhập mật khẩu" autocomplete="current-password" />
+      </div>
+      <button class="btn btn-primary" style="width:100%" id="btnLogin">Đăng nhập</button>
+      <p class="hint" style="margin-top:1rem">Có thể đổi mật khẩu trong tab Cài đặt sau khi đăng nhập.</p>
+    </div>
+  </div>
+
+  <!-- ADMIN APP -->
+  <div id="adminApp" class="hidden">
+    <div class="topbar">
+      <h1>⚙️ Admin · Locket Gold VN</h1>
+      <div class="topbar-actions">
+        <a href="index.html" class="btn btn-secondary btn-sm" target="_blank">👁 Xem trang bán</a>
+        <button class="btn btn-secondary btn-sm" id="btnLogout">Đăng xuất</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="sepay">💳 SePay / Thanh toán</button>
+        <button class="tab-btn" data-tab="posts">📝 Bài viết</button>
+        <button class="tab-btn" data-tab="settings">⚙️ Cài đặt</button>
+      </div>
+
+      <!-- TAB SEPAY -->
+      <div id="tab-sepay">
+        <div class="panel">
+          <h2>💳 Thông tin thanh toán SePay</h2>
+          <p class="panel-desc">
+            Cấu hình tài khoản nhận tiền (VietQR / chuyển khoản). Trang bán sẽ hiện thông tin này khi khách chọn gói.
+            SePay: <a href="https://my.sepay.vn" target="_blank" rel="noopener">my.sepay.vn</a>
+          </p>
+
+          <div class="form-group">
+            <label>
+              Bật thanh toán
+              <span class="status-pill" id="sepayStatusPill">OFF</span>
+            </label>
+            <select id="sepayEnabled">
+              <option value="0">Tắt — chỉ cấp Gold (CTV)</option>
+              <option value="1">Bật — hiện QR / STK khi chọn gói</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Số tài khoản *</label>
+              <input type="text" id="sepayAccount" placeholder="vd: 0123456789" />
+            </div>
+            <div class="form-group">
+              <label>Ngân hàng *</label>
+              <input type="text" id="sepayBank" placeholder="vd: MB Bank, Vietcombank, TPBank…" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Tên chủ tài khoản *</label>
+            <input type="text" id="sepayOwner" placeholder="vd: NGUYEN VAN A" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Mã ngân hàng (BIN) — cho VietQR</label>
+              <input type="text" id="sepayBin" placeholder="vd: 970422 (MB), 970436 (VCB)" />
+              <p class="hint">Dùng tạo link QR SePay / VietQR nếu có.</p>
+            </div>
+            <div class="form-group">
+              <label>Nội dung CK mẫu</label>
+              <input type="text" id="sepayContent" placeholder="vd: LOCKET {username}" />
+              <p class="hint"><code>{username}</code> sẽ thay bằng Username khách.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>SePay API Token (tuỳ chọn)</label>
+            <input type="password" id="sepayToken" placeholder="Token từ my.sepay.vn → API" autocomplete="off" />
+            <p class="hint">Dùng sau nếu tích hợp webhook đối soát tự động. Không bắt buộc để hiện QR/STK.</p>
+          </div>
+
+          <div class="form-group">
+            <label>Ghi chú hiển thị cho khách</label>
+            <textarea id="sepayNote" placeholder="vd: Chuyển khoản đúng số tiền + nội dung. Sau 1–2 phút bấm xác nhận…">Chuyển đúng số tiền và nội dung. Sau khi CK thành công, gửi ảnh bill hoặc bấm xác nhận để được cấp Gold.</textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Giá gói 1 năm (đ)</label>
+              <input type="number" id="price1y" placeholder="60000" min="0" />
+            </div>
+            <div class="form-group">
+              <label>Giá vĩnh viễn iOS (đ)</label>
+              <input type="number" id="priceLifeIos" placeholder="149000" min="0" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Giá vĩnh viễn Android (đ)</label>
+            <input type="number" id="priceLifeAnd" placeholder="180000" min="0" />
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-primary" id="btnSaveSepay">💾 Lưu cấu hình SePay</button>
+          </div>
+
+          <div class="preview-box" id="sepayPreview">
+            <strong>Xem trước:</strong> Chưa cấu hình.
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB POSTS -->
+      <div id="tab-posts" class="hidden">
+        <div class="panel">
+          <h2>📝 Đăng / Sửa bài viết</h2>
+          <p class="panel-desc">Bài viết lưu trên trình duyệt (localStorage) và hiện ở mục Bài viết trên trang bán.</p>
+
+          <input type="hidden" id="postId" value="" />
+          <div class="form-group">
+            <label>Tiêu đề *</label>
+            <input type="text" id="postTitle" placeholder="Tiêu đề bài viết" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Tag / chuyên mục</label>
+              <input type="text" id="postTag" placeholder="vd: TIN TỨC, Hướng dẫn" value="TIN TỨC" />
+            </div>
+            <div class="form-group">
+              <label>Icon (emoji)</label>
+              <input type="text" id="postIcon" placeholder="📝" value="📝" maxlength="4" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tóm tắt (hiện trên card)</label>
+            <input type="text" id="postSummary" placeholder="1–2 câu mô tả ngắn" />
+          </div>
+          <div class="form-group">
+            <label>Nội dung * (hỗ trợ HTML đơn giản: &lt;p&gt; &lt;h4&gt; &lt;ul&gt; &lt;li&gt; &lt;strong&gt;)</label>
+            <textarea id="postContent" style="min-height:200px" placeholder="<p>Nội dung bài viết...</p>"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Thời gian đọc</label>
+              <input type="text" id="postReadTime" placeholder="vd: 5 phút đọc" value="5 phút đọc" />
+            </div>
+            <div class="form-group">
+              <label>Lượt xem (hiển thị)</label>
+              <input type="number" id="postViews" placeholder="0" min="0" value="0" />
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" id="btnSavePost">💾 Lưu bài viết</button>
+            <button class="btn btn-secondary" id="btnResetPost">Làm mới form</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>📋 Danh sách bài viết</h2>
+          <div class="article-list" id="articleList">
+            <div class="empty">Chưa có bài viết. Đăng bài ở form phía trên.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB SETTINGS -->
+      <div id="tab-settings" class="hidden">
+        <div class="panel">
+          <h2>⚙️ Cài đặt admin</h2>
+          <div class="form-group">
+            <label>Đổi mật khẩu admin</label>
+            <input type="password" id="newPass" placeholder="Mật khẩu mới (tối thiểu 4 ký tự)" />
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" id="btnChangePass">Đổi mật khẩu</button>
+          </div>
+          <p class="hint" style="margin-top:1rem">
+            Dữ liệu (SePay, bài viết, mật khẩu) lưu trong <code>localStorage</code> của trình duyệt này.
+            Xóa cache / dùng trình duyệt khác sẽ mất dữ liệu trừ khi bạn export.
+          </p>
+          <div class="btn-group" style="margin-top:1rem">
+            <button class="btn btn-secondary" id="btnExport">📤 Export JSON</button>
+            <button class="btn btn-secondary" id="btnImport">📥 Import JSON</button>
+            <input type="file" id="importFile" accept="application/json" class="hidden" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE = {
+      pass: 'lg_admin_pass',
+      session: 'lg_admin_ok',
+      sepay: 'lg_sepay',
+      posts: 'lg_posts'
+    };
+    const DEFAULT_PASS = 'admin123';
+
+    function toast(msg) {
+      const t = document.createElement('div');
+      t.className = 'toast';
+      t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(() => t.remove(), 3200);
+    }
+
+    function getPass() {
+      return localStorage.getItem(STORAGE.pass) || DEFAULT_PASS;
+    }
+
+    function isLoggedIn() {
+      return sessionStorage.getItem(STORAGE.session) === '1';
+    }
+
+    function showApp(show) {
+      document.getElementById('loginScreen').classList.toggle('hidden', show);
+      document.getElementById('adminApp').classList.toggle('hidden', !show);
+      if (show) {
+        loadSepayForm();
+        renderPosts();
+      }
+    }
+
+    // Login
+    document.getElementById('btnLogin').onclick = () => {
+      const p = document.getElementById('loginPass').value;
+      if (p === getPass()) {
+        sessionStorage.setItem(STORAGE.session, '1');
+        showApp(true);
+      } else {
+        toast('❌ Sai mật khẩu');
+      }
+    };
+    document.getElementById('loginPass').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('btnLogin').click();
+    });
+    document.getElementById('btnLogout').onclick = () => {
+      sessionStorage.removeItem(STORAGE.session);
+      showApp(false);
+    };
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        ['sepay', 'posts', 'settings'].forEach(id => {
+          document.getElementById('tab-' + id).classList.toggle('hidden', btn.dataset.tab !== id);
+        });
+      });
+    });
+
+    // ----- SePay -----
+    function defaultSepay() {
+      return {
+        enabled: false,
+        account: '',
+        bank: '',
+        owner: '',
+        bin: '',
+        content: 'LOCKET {username}',
+        token: '',
+        note: 'Chuyển đúng số tiền và nội dung. Sau khi CK thành công, gửi ảnh bill hoặc bấm xác nhận để được cấp Gold.',
+        price1y: 60000,
+        priceLifeIos: 149000,
+        priceLifeAnd: 180000
+      };
+    }
+
+    function getSepay() {
+      try {
+        const raw = localStorage.getItem(STORAGE.sepay);
+        return raw ? { ...defaultSepay(), ...JSON.parse(raw) } : defaultSepay();
+      } catch {
+        return defaultSepay();
+      }
+    }
+
+    function loadSepayForm() {
+      const s = getSepay();
+      document.getElementById('sepayEnabled').value = s.enabled ? '1' : '0';
+      document.getElementById('sepayAccount').value = s.account || '';
+      document.getElementById('sepayBank').value = s.bank || '';
+      document.getElementById('sepayOwner').value = s.owner || '';
+      document.getElementById('sepayBin').value = s.bin || '';
+      document.getElementById('sepayContent').value = s.content || '';
+      document.getElementById('sepayToken').value = s.token || '';
+      document.getElementById('sepayNote').value = s.note || '';
+      document.getElementById('price1y').value = s.price1y || 60000;
+      document.getElementById('priceLifeIos').value = s.priceLifeIos || 149000;
+      document.getElementById('priceLifeAnd').value = s.priceLifeAnd || 180000;
+      updateSepayPreview();
+    }
+
+    function updateSepayPreview() {
+      const en = document.getElementById('sepayEnabled').value === '1';
+      const acc = document.getElementById('sepayAccount').value.trim();
+      const bank = document.getElementById('sepayBank').value.trim();
+      const owner = document.getElementById('sepayOwner').value.trim();
+      const pill = document.getElementById('sepayStatusPill');
+      pill.textContent = en ? 'ON' : 'OFF';
+      pill.className = 'status-pill ' + (en ? 'status-on' : 'status-off');
+      const box = document.getElementById('sepayPreview');
+      if (!acc) {
+        box.innerHTML = '<strong>Xem trước:</strong> Chưa nhập số tài khoản.';
+        return;
+      }
+      box.innerHTML = '<strong>Xem trước:</strong><br/>' +
+        (en ? '✅ Đang bật trên trang bán' : '⏸ Đang tắt') + '<br/>' +
+        'STK: <strong>' + acc + '</strong> · ' + (bank || '—') + '<br/>' +
+        'Chủ TK: <strong>' + (owner || '—') + '</strong><br/>' +
+        'Nội dung: ' + (document.getElementById('sepayContent').value || '—');
+    }
+
+    ['sepayEnabled', 'sepayAccount', 'sepayBank', 'sepayOwner', 'sepayContent'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateSepayPreview);
+      document.getElementById(id).addEventListener('change', updateSepayPreview);
+    });
+
+    document.getElementById('btnSaveSepay').onclick = () => {
+      const data = {
+        enabled: document.getElementById('sepayEnabled').value === '1',
+        account: document.getElementById('sepayAccount').value.trim(),
+        bank: document.getElementById('sepayBank').value.trim(),
+        owner: document.getElementById('sepayOwner').value.trim(),
+        bin: document.getElementById('sepayBin').value.trim(),
+        content: document.getElementById('sepayContent').value.trim() || 'LOCKET {username}',
+        token: document.getElementById('sepayToken').value.trim(),
+        note: document.getElementById('sepayNote').value.trim(),
+        price1y: parseInt(document.getElementById('price1y').value, 10) || 60000,
+        priceLifeIos: parseInt(document.getElementById('priceLifeIos').value, 10) || 149000,
+        priceLifeAnd: parseInt(document.getElementById('priceLifeAnd').value, 10) || 180000
+      };
+      if (data.enabled && (!data.account || !data.bank || !data.owner)) {
+        toast('❌ Bật SePay cần đủ STK, ngân hàng, chủ TK');
+        return;
+      }
+      localStorage.setItem(STORAGE.sepay, JSON.stringify(data));
+      updateSepayPreview();
+      toast('✅ Đã lưu cấu hình SePay');
+    };
+
+    // ----- Posts -----
+    function getPosts() {
+      try {
+        const raw = localStorage.getItem(STORAGE.posts);
+        return raw ? JSON.parse(raw) : [];
+      } catch { return []; }
+    }
+
+    function savePosts(list) {
+      localStorage.setItem(STORAGE.posts, JSON.stringify(list));
+    }
+
+    function renderPosts() {
+      const list = getPosts().sort((a, b) => (b.updated || b.created || 0) - (a.updated || a.created || 0));
+      const el = document.getElementById('articleList');
+      if (!list.length) {
+        el.innerHTML = '<div class="empty">Chưa có bài viết. Đăng bài ở form phía trên.</div>';
+        return;
+      }
+      el.innerHTML = list.map(p => `
+        <div class="article-item">
+          <div>
+            <h3>${p.icon || '📝'} ${escapeHtml(p.title)}</h3>
+            <div class="meta">${escapeHtml(p.tag || 'TIN TỨC')} · ${escapeHtml(p.readTime || '')} · ${p.views || 0} lượt xem · ${formatDate(p.updated || p.created)}</div>
+          </div>
+          <div class="actions">
+            <button class="btn btn-secondary btn-sm" data-edit="${p.id}">Sửa</button>
+            <button class="btn btn-danger btn-sm" data-del="${p.id}">Xóa</button>
+          </div>
+        </div>
+      `).join('');
+
+      el.querySelectorAll('[data-edit]').forEach(btn => {
+        btn.onclick = () => editPost(btn.dataset.edit);
+      });
+      el.querySelectorAll('[data-del]').forEach(btn => {
+        btn.onclick = () => {
+          if (!confirm('Xóa bài viết này?')) return;
+          savePosts(getPosts().filter(p => p.id !== btn.dataset.del));
+          renderPosts();
+          toast('Đã xóa bài viết');
+        };
+      });
+    }
+
+    function escapeHtml(s) {
+      return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function formatDate(ts) {
+      if (!ts) return '';
+      try { return new Date(ts).toLocaleString('vi-VN'); } catch { return ''; }
+    }
+
+    function resetPostForm() {
+      document.getElementById('postId').value = '';
+      document.getElementById('postTitle').value = '';
+      document.getElementById('postTag').value = 'TIN TỨC';
+      document.getElementById('postIcon').value = '📝';
+      document.getElementById('postSummary').value = '';
+      document.getElementById('postContent').value = '';
+      document.getElementById('postReadTime').value = '5 phút đọc';
+      document.getElementById('postViews').value = '0';
+    }
+
+    function editPost(id) {
+      const p = getPosts().find(x => x.id === id);
+      if (!p) return;
+      document.getElementById('postId').value = p.id;
+      document.getElementById('postTitle').value = p.title || '';
+      document.getElementById('postTag').value = p.tag || 'TIN TỨC';
+      document.getElementById('postIcon').value = p.icon || '📝';
+      document.getElementById('postSummary').value = p.summary || '';
+      document.getElementById('postContent').value = p.content || '';
+      document.getElementById('postReadTime').value = p.readTime || '';
+      document.getElementById('postViews').value = p.views || 0;
+      document.querySelector('[data-tab="posts"]').click();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById('btnResetPost').onclick = resetPostForm;
+
+    document.getElementById('btnSavePost').onclick = () => {
+      const title = document.getElementById('postTitle').value.trim();
+      const content = document.getElementById('postContent').value.trim();
+      if (!title || !content) {
+        toast('❌ Cần tiêu đề và nội dung');
+        return;
+      }
+      const id = document.getElementById('postId').value || ('p_' + Date.now());
+      const list = getPosts();
+      const existing = list.findIndex(p => p.id === id);
+      const item = {
+        id,
+        title,
+        tag: document.getElementById('postTag').value.trim() || 'TIN TỨC',
+        icon: document.getElementById('postIcon').value.trim() || '📝',
+        summary: document.getElementById('postSummary').value.trim(),
+        content,
+        readTime: document.getElementById('postReadTime').value.trim() || '5 phút đọc',
+        views: parseInt(document.getElementById('postViews').value, 10) || 0,
+        created: existing >= 0 ? list[existing].created : Date.now(),
+        updated: Date.now()
+      };
+      if (existing >= 0) list[existing] = item;
+      else list.push(item);
+      savePosts(list);
+      renderPosts();
+      resetPostForm();
+      toast(existing >= 0 ? '✅ Đã cập nhật bài viết' : '✅ Đã đăng bài viết mới');
+    };
+
+    // Settings
+    document.getElementById('btnChangePass').onclick = () => {
+      const p = document.getElementById('newPass').value;
+      if (!p || p.length < 4) {
+        toast('❌ Mật khẩu tối thiểu 4 ký tự');
+        return;
+      }
+      localStorage.setItem(STORAGE.pass, p);
+      document.getElementById('newPass').value = '';
+      toast('✅ Đã đổi mật khẩu');
+    };
+
+    document.getElementById('btnExport').onclick = () => {
+      const data = {
+        sepay: getSepay(),
+        posts: getPosts(),
+        exportedAt: new Date().toISOString()
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'locket-gold-admin-backup.json';
+      a.click();
+      toast('✅ Đã export');
+    };
+
+    document.getElementById('btnImport').onclick = () => document.getElementById('importFile').click();
+    document.getElementById('importFile').onchange = (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          if (data.sepay) localStorage.setItem(STORAGE.sepay, JSON.stringify(data.sepay));
+          if (data.posts) localStorage.setItem(STORAGE.posts, JSON.stringify(data.posts));
+          loadSepayForm();
+          renderPosts();
+          toast('✅ Đã import dữ liệu');
+        } catch {
+          toast('❌ File JSON không hợp lệ');
+        }
+      };
+      reader.readAsText(file);
+      e.target.value = '';
+    };
+
+    // Init
+    if (isLoggedIn()) showApp(true);
+  </script>
+</body>
+</html>
