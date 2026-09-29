@@ -1,6 +1,6 @@
 # Locket Gold — locketgold.info
 
-Landing page tĩnh dành cho `locketgold.info`, xây dựng bằng Vite và tối ưu để triển khai trên Cloudflare Pages.
+Landing page tĩnh dành cho `locketgold.info`, xây dựng bằng Vite và tối ưu để triển khai bằng Cloudflare Workers Static Assets.
 
 ## Công nghệ
 
@@ -27,18 +27,21 @@ npm run preview
 
 Thư mục đầu ra là `dist/`.
 
-## Deploy Cloudflare Pages
+## Deploy Cloudflare Workers
 
-1. Vào **Workers & Pages** trong Cloudflare Dashboard.
-2. Chọn **Create application → Pages → Connect to Git**.
-3. Chọn repo GitHub này và nhánh `main`.
-4. Thiết lập:
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-   - Node.js version: `22`
-5. Sau khi deploy thành công, vào **Custom domains** và thêm `locketgold.info` cùng `www.locketgold.info`.
+1. Vào **Workers & Pages → Create application → Connect GitHub**.
+2. Chọn repo GitHub này và nhánh `main`.
+3. Thiết lập project name là `locketgold-info` và build command là `npm run build`.
+4. Cloudflare dùng deploy command mặc định `npx wrangler deploy`. File `wrangler.jsonc` trỏ Workers Static Assets tới thư mục `dist/`.
+5. Sau khi deploy thành công, vào **Settings → Domains & Routes** để thêm `locketgold.info` và `www.locketgold.info`.
 
-File `public/_headers` sẽ được Cloudflare Pages dùng để bổ sung security headers.
+Deploy thủ công từ máy local sau khi đăng nhập Wrangler:
+
+```powershell
+npm run deploy
+```
+
+File `public/_headers` sẽ được Workers Static Assets dùng để bổ sung security headers.
 
 ## Cấu trúc
 
@@ -55,7 +58,8 @@ File `public/_headers` sẽ được Cloudflare Pages dùng để bổ sung secu
 ├── src/
 │   ├── main.js
 │   └── styles.css
-└── vite.config.js
+├── vite.config.js
+└── wrangler.jsonc
 ```
 
 ## Lưu ý chức năng
