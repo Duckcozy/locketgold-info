@@ -87,7 +87,7 @@ Worker xác thực header, chỉ nhận giao dịch tiền vào, kiểm tra số
 
 ## DNS, APK và API kích hoạt
 
-Đăng nhập `/admin/` để cấu hình đường dẫn HTTPS tải DNS, đường dẫn APK Android và URL API kích hoạt. Các nút tải bị vô hiệu hóa cho tới khi có đường dẫn thật. Khóa API và cấu hình bí mật của SePay chỉ tồn tại trong Cloudflare Secrets.
+Đăng nhập `/quan-tri-locket/` để cấu hình đường dẫn HTTPS tải DNS/APK, URL API kích hoạt và liên kết hỗ trợ. Đường dẫn riêng chỉ giảm khả năng bị dò thấy, không thay thế mật khẩu mạnh; khóa API và cấu hình SePay vẫn chỉ tồn tại trong Cloudflare Secrets. Sau khi cập nhật mã, áp dụng migration mới để bật trường giá cũ: `npx wrangler d1 migrations apply locketgold-db --remote` (nếu đã kết nối D1).
 
 ## Deploy
 

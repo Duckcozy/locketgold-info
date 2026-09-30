@@ -15,7 +15,7 @@ export default defineConfig({
         contact: resolve(import.meta.dirname, "lien-he/index.html"),
         dns: resolve(import.meta.dirname, "tai-dns/index.html"),
         checkout: resolve(import.meta.dirname, "thanh-toan/index.html"),
-        admin: resolve(import.meta.dirname, "admin/index.html"),
+        admin: resolve(import.meta.dirname, "quan-tri-locket/index.html"),
       },
     },
   },

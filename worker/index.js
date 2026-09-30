@@ -62,7 +62,7 @@ async function route(request, env, ctx, url) {
 
 async function getPlans(env) {
   if (!env.DB) return json({ plans: DEFAULT_PLANS.map(normalizePlan) });
-  const { results } = await env.DB.prepare("SELECT id, name, platform, price, period, featured FROM plans WHERE enabled = 1 ORDER BY sort_order, price").all();
+  const { results } = await env.DB.prepare("SELECT id, name, platform, price, old_price, period, featured FROM plans WHERE enabled = 1 ORDER BY sort_order, price").all();
   return json({ plans: (results?.length ? results : DEFAULT_PLANS).map(normalizePlan) });
 }
 
@@ -85,11 +85,13 @@ async function getPost(env, slug) {
 }
 
 async function getPublicConfig(env) {
-  const settings = await readSettings(env, ["dns_url", "apk_url", "support_email"]);
+  const settings = await readSettings(env, ["dns_url", "apk_url", "support_email", "support_zalo", "support_facebook"]);
   return json({
     dns_url: settings.dns_url || env.DNS_DOWNLOAD_URL || "",
     apk_url: settings.apk_url || env.ANDROID_APK_URL || "",
     support_email: settings.support_email || env.SUPPORT_EMAIL || "",
+    support_zalo: settings.support_zalo || env.SUPPORT_ZALO_URL || "",
+    support_facebook: settings.support_facebook || env.SUPPORT_FACEBOOK_URL || "",
   });
 }
 
@@ -126,7 +128,7 @@ async function createOrder(request, env) {
   const code = `LG${randomCode(8)}`;
   await env.DB.prepare("INSERT INTO orders (code, username, contact, plan_id, plan_name, platform, subtotal, discount_amount, amount, promo_code, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')")
     .bind(code, username, contact, plan.id, plan.name, plan.platform, Number(plan.price), discount, amount, promo?.code || null).run();
-  return json({ code, amount, transfer_content: code, bank_name: env.BANK_NAME || "", bank_account: env.BANK_ACCOUNT || "", account_name: env.BANK_ACCOUNT_NAME || "" }, 201);
+  return json({ code, amount, transfer_content: code, bank_name: env.BANK_NAME || "", bank_bin: env.BANK_BIN || "", bank_account: env.BANK_ACCOUNT || "", account_name: env.BANK_ACCOUNT_NAME || "" }, 201);
 }
 
 async function getOrder(env, code) {
@@ -229,17 +231,18 @@ async function adminSavePlan(request, env) {
   const body = await readJson(request);
   const id = cleanText(body.id, 50);
   const price = Number(body.price);
-  if (!DEFAULT_PLANS.some((plan) => plan.id === id) || !Number.isSafeInteger(price) || price < 0 || price > 100_000_000) throw httpError(400, "Gói hoặc mức giá không hợp lệ.");
-  await env.DB.prepare("UPDATE plans SET price = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(price, id).run();
+  const oldPrice = body.old_price === "" || body.old_price == null ? null : Number(body.old_price);
+  if (!DEFAULT_PLANS.some((plan) => plan.id === id) || !Number.isSafeInteger(price) || price < 0 || price > 100_000_000 || (oldPrice !== null && (!Number.isSafeInteger(oldPrice) || oldPrice <= price || oldPrice > 100_000_000))) throw httpError(400, "Gói hoặc mức giá không hợp lệ. Giá cũ phải cao hơn giá hiện tại.");
+  await env.DB.prepare("UPDATE plans SET price = ?, old_price = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(price, oldPrice, id).run();
   return json({ message: "Đã cập nhật bảng giá." });
 }
 
 async function adminSaveSettings(request, env) {
   await requireSession(request, env, "admin"); requireDb(env);
   const body = await readJson(request);
-  const allowed = ["dns_url", "apk_url", "upstream_api_url"];
+  const allowed = ["dns_url", "apk_url", "upstream_api_url", "support_zalo", "support_facebook"];
   for (const key of allowed) {
-    const value = cleanUrl(body[key]);
+    const value = ["dns_url", "apk_url", "upstream_api_url", "support_zalo", "support_facebook"].includes(key) ? cleanUrl(body[key]) : "";
     await env.DB.prepare("INSERT INTO settings (key, value, updated_at) VALUES (?, ?, CURRENT_TIMESTAMP) ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = CURRENT_TIMESTAMP").bind(key, value).run();
   }
   return json({ message: "Đã lưu cấu hình công khai. Khóa bí mật không bị thay đổi." });
