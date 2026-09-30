@@ -1,8 +1,25 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "locketgold-info",
+  "main": "./worker/index.js",
   "compatibility_date": "2026-09-29",
+  "vars": {
+    "SITE_URL": "https://locketgold.info"
+  },
   "assets": {
-    "directory": "./dist"
-  }
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+
+  // Sau khi chạy `npx wrangler d1 create locketgold-db`, bỏ chú thích
+  // khối dưới đây và thay database_id bằng ID Cloudflare trả về.
+  // "d1_databases": [
+  //   {
+  //     "binding": "DB",
+  //     "database_name": "locketgold-db",
+  //     "database_id": "PASTE_DATABASE_ID_HERE",
+  //     "migrations_dir": "migrations"
+  //   }
+  // ]
 }
