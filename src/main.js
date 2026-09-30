@@ -1,5 +1,5 @@
 import "./styles.css";
-import { normalizeUsername } from "./username.js";
+import { normalizeUsername, parsePastedUsername } from "./username.js";
 
 const page = document.body.dataset.page || "home";
 const app = document.querySelector("#app");
@@ -330,7 +330,7 @@ function initCheckout() {
     try {
       if (!navigator.clipboard?.readText) throw new Error("Trình duyệt chưa cho phép đọc clipboard; hãy dán trực tiếp vào ô Username.");
       const pasted = await navigator.clipboard.readText();
-      const username = normalizeUsername(pasted);
+      const username = parsePastedUsername(pasted);
       if (!username) throw new Error("Không tìm thấy Username hợp lệ trong nội dung vừa dán.");
       usernameInput.value = username;
       usernameInput.setCustomValidity("");

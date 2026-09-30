@@ -1,10 +1,13 @@
 export function normalizeUsername(value) {
   if (typeof value !== "string") return "";
   const trimmed = value.trim();
-  const profileName = usernameFromProfileUrl(trimmed);
-  const candidate = profileName || trimmed;
-  const username = candidate.startsWith("@") ? candidate.slice(1) : candidate;
+  const username = trimmed.startsWith("@") ? trimmed.slice(1) : trimmed;
   return /^[\p{L}\p{N}._-]{2,64}$/u.test(username) ? username : "";
+}
+
+export function parsePastedUsername(value) {
+  const direct = normalizeUsername(value);
+  return direct || usernameFromProfileUrl(typeof value === "string" ? value.trim() : "");
 }
 
 function usernameFromProfileUrl(value) {
