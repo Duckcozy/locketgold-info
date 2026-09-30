@@ -18,6 +18,10 @@ npm run preview
 
 Nếu chưa gắn D1, toàn bộ trang công khai vẫn chạy; các thao tác tạo đơn, admin và CTV sẽ báo hệ thống chưa được cấu hình.
 
+Trang `/thanh-toan/` có bốn bước: nhập thông tin, tự xác nhận Username, chọn gói và rà soát trước khi tạo đơn. Bước xác nhận chỉ hiển thị lại dữ liệu khách đã nhập; website chưa có API tra cứu tài khoản Locket nên không xác minh avatar hoặc trạng thái Gold.
+
+Trang `/huong-dan/` có bộ 4 bước tương tác và FAQ. Nội dung chuyển khoản luôn dẫn khách xem thông tin trên đơn thực tế, không hiển thị QR hoặc số tài khoản cố định từ ảnh minh họa.
+
 ## Khởi tạo Cloudflare D1
 
 ```powershell
@@ -118,4 +122,17 @@ Sau khi build thành công, vào **Workers & Pages → locketgold-info → Domai
 └── worker/                # API Worker
 ```
 
-Ảnh mascot hiện tại là asset tạo riêng cho dự án, không phải tài sản chính thức của Sanrio hoặc Locket. Có thể thay bằng ảnh do chủ dự án cung cấp sau này.
+## Bộ ảnh chủ dự án cung cấp
+
+15 tệp PNG từ thư mục Drive đã được lưu trong repo: 10 ảnh chưa tối ưu ở `public/images/`, 4 ảnh gốc ở `reference-images/` và ảnh chứa thông tin chuyển khoản mẫu cũng ở `reference-images/` để không được deploy công khai. Bốn ảnh đang dùng (`banner-locketpro`, `username`, `nodns`, `lienhe`) đã được nén thành WebP trong `public/images/` (tổng dung lượng từ 8,62 MB xuống 0,99 MB). Trang còn dùng `logo.png` ở phần nhận diện, `khunggold.png` ở phần giới thiệu và `khungavatar.png` ở trang bảng giá.
+
+Các tệp còn lại được giữ để hoàn thiện nội dung sau khi xác nhận:
+
+- `buoc1.png`, `buoc2.png`: hình mô tả tra cứu tài khoản/avatar qua API, trong khi website chưa có chức năng tra cứu này.
+- `reference-images/buoc3.png`: chứa số tài khoản và QR thanh toán cố định; không được phục vụ trên web. Thông tin chuyển khoản phải lấy từ đơn thực tế.
+- `buoc4.png`: mô tả kích hoạt tự động và hỗ trợ 24/7; chỉ dùng sau khi quy trình thực tế đáp ứng các cam kết này.
+- `antoan.png`: chứa cam kết an toàn tuyệt đối 100%, chưa có cơ sở để công bố.
+- `noapp.png`: còn chi tiết Doraemon, không phù hợp yêu cầu giao diện Hello Kitty.
+- `anh1.png`, `huyhieu.png`: ảnh trang trí dự phòng, chưa cần cho bố cục hiện tại.
+
+Các ảnh do chủ dự án cung cấp không phải tài sản chính thức của Locket Labs hoặc Sanrio.

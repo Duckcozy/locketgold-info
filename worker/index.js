@@ -1,3 +1,5 @@
+import { normalizeUsername } from "../src/username.js";
+
 const DEFAULT_PLANS = [
   { id: "ios-month", name: "Gói 1 tháng", platform: "iOS", price: 29000, period: "1 tháng", featured: 0 },
   { id: "ios-year", name: "Gói 1 năm", platform: "iOS", price: 60000, period: "1 năm", featured: 0 },
@@ -101,18 +103,19 @@ async function quoteOrder(request, env) {
   const body = await readJson(request);
   const plan = await findPlan(env, body.plan_id);
   if (!plan) throw httpError(400, "Gói đã chọn không tồn tại.");
-  const promo = await findPromo(env, body.promo_code);
-  if (!promo) throw httpError(400, "Mã giảm giá không hợp lệ hoặc đã hết hạn.");
-  const discountAmount = Math.floor(Number(plan.price) * Number(promo.percent) / 100);
-  return json({ subtotal: Number(plan.price), discount_percent: Number(promo.percent), discount_amount: discountAmount, total: Number(plan.price) - discountAmount });
+  const promoCode = cleanText(body.promo_code, 32);
+  const promo = promoCode ? await findPromo(env, promoCode) : null;
+  if (promoCode && !promo) throw httpError(400, "Mã giảm giá không hợp lệ hoặc đã hết hạn.");
+  const discountAmount = promo ? Math.floor(Number(plan.price) * Number(promo.percent) / 100) : 0;
+  return json({ subtotal: Number(plan.price), discount_percent: Number(promo?.percent || 0), discount_amount: discountAmount, total: Number(plan.price) - discountAmount });
 }
 
 async function createOrder(request, env) {
   requireDb(env);
   const body = await readJson(request);
-  const username = cleanUsername(body.username);
+  const username = normalizeUsername(body.username);
   const contact = cleanText(body.contact, 120);
-  if (username.length < 2) throw httpError(400, "Username chưa hợp lệ.");
+  if (!username) throw httpError(400, "Username chỉ gồm 2–64 chữ, số, dấu chấm, gạch dưới hoặc gạch ngang; không dán link.");
   if (contact.length < 3) throw httpError(400, "Vui lòng nhập thông tin liên hệ.");
   const plan = await findPlan(env, body.plan_id);
   if (!plan) throw httpError(400, "Gói đã chọn không tồn tại.");
@@ -153,9 +156,9 @@ async function sepayWebhook(request, env, ctx) {
 
   const order = await env.DB.prepare("SELECT * FROM orders WHERE code = ?").bind(code).first();
   if (!order || Number(payload.transferAmount) < Number(order.amount)) return json({ success: true });
-  await env.DB.prepare("UPDATE orders SET status = 'paid', payment_ref = ?, paid_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE code = ? AND status = 'pending'")
+  const updated = await env.DB.prepare("UPDATE orders SET status = 'paid', payment_ref = ?, paid_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE code = ? AND status = 'pending'")
     .bind(String(payload.referenceCode || transactionId), code).run();
-  ctx.waitUntil(activateOrder(env, { ...order, status: "paid" }));
+  if (updated.meta?.changes === 1) ctx.waitUntil(activateOrder(env, { ...order, status: "paid" }));
   return json({ success: true });
 }
 
@@ -298,9 +301,9 @@ async function ctvCreateOrder(request, env, ctx) {
   requireDb(env);
   const session = await requireSession(request, env, "ctv");
   const body = await readJson(request);
-  const username = cleanUsername(body.username);
+  const username = normalizeUsername(body.username);
   const plan = await findPlan(env, body.plan_id);
-  if (username.length < 2 || !plan) throw httpError(400, "Username hoặc gói chưa hợp lệ.");
+  if (!username || !plan) throw httpError(400, "Username hoặc gói chưa hợp lệ.");
   const user = await env.DB.prepare("SELECT id, username, balance FROM ctv_users WHERE id = ? AND active = 1").bind(Number(session.sub)).first();
   if (!user) throw httpError(401, "Tài khoản không còn hoạt động.");
   if (Number(user.balance) < Number(plan.price)) throw httpError(400, "Số dư CTV không đủ để tạo đơn.");
@@ -409,7 +412,6 @@ async function readJson(request) {
 }
 
 function cleanText(value, max) { return String(value || "").trim().replace(/[\u0000-\u001f\u007f]/g, "").slice(0, max); }
-function cleanUsername(value) { return cleanText(value, 64).replace(/^@/, "").replace(/[^\p{L}\p{N}._-]/gu, ""); }
 function cleanUrl(value) { const text = cleanText(value, 500); if (!text) return ""; try { const url = new URL(text); return url.protocol === "https:" ? url.href : ""; } catch { return ""; } }
 function slugify(value) { return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/đ/g, "d").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 100); }
 function maskUsername(value) { const text = String(value || ""); if (text.length <= 3) return `${text[0] || "u"}***`; return `@${text.slice(0, 2)}${"*".repeat(Math.min(6, text.length - 2))}`; }
