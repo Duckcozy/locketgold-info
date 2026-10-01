@@ -22,10 +22,31 @@ const fallbackPlans = [
 ];
 
 const fallbackPosts = [
-  { slug: "bao-ve-tai-khoan", title: "Ba nguyên tắc bảo vệ tài khoản Locket", excerpt: "Không chia sẻ mật khẩu, OTP và luôn kiểm tra đúng Username trước khi xác nhận.", published_at: "2026-09-30" },
-  { slug: "kiem-tra-sau-nang-cap", title: "Cách kiểm tra sau khi nâng cấp Gold", excerpt: "Các bước ngắn gọn giúp bạn xác nhận trạng thái trên ứng dụng một cách an toàn.", published_at: "2026-09-29" },
-  { slug: "chon-goi-phu-hop", title: "Nên chọn gói Gold nào?", excerpt: "So sánh thời hạn và nền tảng để chọn đúng gói cho thiết bị đang sử dụng.", published_at: "2026-09-28" },
+  { slug: "bao-ve-tai-khoan", title: "Ba nguyên tắc bảo vệ tài khoản Locket", excerpt: "Không chia sẻ mật khẩu, OTP và luôn kiểm tra đúng Username trước khi xác nhận.", published_at: "2026-09-30", content: "1. Giữ riêng mật khẩu và OTP\nChỉ nhập Username khi đặt gói. Không cung cấp mật khẩu, mã OTP hoặc mã khôi phục cho người khác, kể cả người tự nhận là nhân viên hỗ trợ.\n2. Kiểm tra địa chỉ website\nHãy đặt gói và theo dõi đơn tại locketgold.info. Kiểm tra tên miền trên thanh địa chỉ trước khi nhập thông tin hoặc chuyển khoản.\n3. Đối chiếu Username và mã đơn\nMở Locket để kiểm tra chính xác Username. Sau khi tạo đơn, giữ lại mã đơn và đối chiếu số tiền cùng nội dung chuyển khoản trên trang thanh toán. Khi cần hỗ trợ, gửi mã đơn qua các kênh ở trang Liên hệ." },
+  { slug: "kiem-tra-sau-nang-cap", title: "Cách kiểm tra sau khi nâng cấp Gold", excerpt: "Các bước ngắn gọn giúp bạn xác nhận trạng thái trên ứng dụng một cách an toàn.", published_at: "2026-09-29", content: "Kiểm tra trạng thái đơn\nSau khi chuyển khoản, giữ trang thanh toán và bấm Kiểm tra thanh toán. Đối chiếu mã đơn, số tiền và nội dung chuyển khoản nếu đơn chưa được ghi nhận.\nKiểm tra trong ứng dụng\nKhi đơn được báo hoàn tất, mở lại Locket bằng đúng tài khoản đã đặt gói. Kiểm tra quyền lợi Gold trong phần tài khoản hoặc cài đặt của ứng dụng; vị trí hiển thị có thể khác theo phiên bản.\nNếu quyền lợi chưa xuất hiện\nĐóng rồi mở lại ứng dụng và kiểm tra kết nối mạng. Nếu vẫn chưa thấy, liên hệ hỗ trợ kèm mã đơn, Username và ảnh màn hình. Không gửi mật khẩu hoặc OTP.\nGiữ lại thông tin đơn\nLưu mã đơn và xác nhận thanh toán để có thể đối soát khi cần hỗ trợ về sau." },
+  { slug: "chon-goi-phu-hop", title: "Nên chọn gói Gold nào?", excerpt: "So sánh thời hạn và nền tảng để chọn đúng gói cho thiết bị đang sử dụng.", published_at: "2026-09-28", content: "Chọn đúng nền tảng\nTrước tiên, xác định bạn đang dùng iPhone (iOS) hay Android. Chọn gói tương ứng với thiết bị và đọc hướng dẫn dành cho nền tảng đó trước khi thanh toán.\nGói 1 tháng\nPhù hợp khi bạn muốn thử trải nghiệm trong thời gian ngắn. Kiểm tra giá và thời hạn đang hiển thị trên bảng giá.\nGói 1 năm\nPhù hợp khi bạn dự định dùng lâu hơn. So sánh tổng chi phí với lựa chọn theo tháng trước khi quyết định.\nGói vĩnh viễn\nĐọc rõ quyền lợi và điều kiện áp dụng của gói. Nếu chưa rõ ý nghĩa thời hạn hoặc khả năng hỗ trợ khi đổi thiết bị, hỏi qua trang Liên hệ trước khi đặt.\nKiểm tra lần cuối\nỞ bước rà soát đơn, đối chiếu nền tảng, thời hạn, Username và số tiền. Giá trên đơn là mức giá cần kiểm tra trước khi chuyển khoản." },
 ];
+
+// Add customer-owned screenshots here when available; each opens in the gallery viewer.
+const feedbackImages = [];
+
+function feedbackGallery() {
+  const items = feedbackImages.length ? feedbackImages : Array.from({ length: 4 }, (_, index) => ({ caption: `Ảnh feedback ${String(index + 1).padStart(2, "0")}` }));
+  return `<section class="section section--compact"><div class="container"><div class="section-heading"><span class="eyebrow">Khách hàng chia sẻ</span><h2>Feedback & trải nghiệm</h2><p>Những hình ảnh phản hồi từ khách hàng sẽ được cập nhật tại đây.</p></div><div class="feedback-grid">${items.map((item) => `<article class="feedback-card">${item.src ? `<button class="feedback-image" type="button" data-feedback-src="${escapeHtml(item.src)}" data-feedback-caption="${escapeHtml(item.caption)}" aria-label="Xem đầy đủ ${escapeHtml(item.caption)}"><img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.caption)}" loading="lazy" decoding="async"></button>` : '<div class="feedback-placeholder"><span aria-hidden="true">▧</span><span>Đang cập nhật ảnh</span></div>'}<div class="feedback-caption"><strong>${escapeHtml(item.caption)}</strong><span>${item.src ? "Chạm để xem ảnh đầy đủ" : "Sắp có hình ảnh mới"}</span></div></article>`).join("")}</div></div></section><dialog id="feedback-viewer" class="feedback-viewer" aria-label="Xem ảnh feedback"><button class="modal-close" type="button" aria-label="Đóng ảnh">×</button><img alt=""><p></p></dialog>`;
+}
+
+function navIcon(key) {
+  const paths = {
+    home: '<path d="m3 10 9-7 9 7v10H3z"/><path d="M9 20v-7h6v7"/>',
+    pricing: '<path d="m3 6 4 4 5-7 5 7 4-4-3 12H6z"/><path d="M6 21h12"/>',
+    trust: '<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6z"/><path d="m8 12 3 3 5-6"/>',
+    posts: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+    guide: '<path d="M12 5v16M3 4h5l4 2 4-2h5v15h-5l-4 2-4-2H3z"/>',
+    ctv: '<circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M17 5a3 3 0 0 1 0 6M21 21v-3a6 6 0 0 0-4-5"/>',
+    contact: '<path d="M4 13v-1a8 8 0 0 1 16 0v1M20 17v2a2 2 0 0 1-2 2h-4"/><rect x="2" y="12" width="4" height="7" rx="2"/><rect x="18" y="12" width="4" height="7" rx="2"/>',
+  };
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths[key]}</svg>`;
+}
 
 const money = (value) => `${new Intl.NumberFormat("vi-VN").format(Number(value || 0))}đ`;
 const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]);
@@ -38,10 +59,10 @@ function brand() {
 }
 
 function header() {
-  const links = navItems.map(([key, href, label, icon]) => `<a href="${href}" class="${page === key ? "is-active" : ""}"><span class="nav-icon" aria-hidden="true">${icon}</span><span>${label}</span>${key === "pricing" ? '<em>HOT</em>' : ""}</a>`).join("");
+  const links = navItems.map(([key, href, label]) => `<a href="${href}" class="${page === key ? "is-active" : ""} ${key === "pricing" ? "nav-link--gold" : ""}" ${page === key ? 'aria-current="page"' : ""}><span class="nav-icon" aria-hidden="true">${navIcon(key)}</span><span>${label}</span>${key === "pricing" ? '<em>HOT</em>' : ""}</a>`).join("");
   return `<header class="site-header"><div class="container nav-wrap">${brand()}
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Mở menu"><span></span><span></span><span></span></button>
-    <nav class="main-nav" id="main-nav" aria-label="Điều hướng chính">${links}</nav>
+    <nav class="main-nav" id="main-nav" aria-label="Điều hướng chính"><div class="nav-drawer-heading"><div><strong>Khám phá Locket Gold</strong><small>locketgold.info</small></div><button class="nav-close" type="button" aria-label="Đóng menu">×</button></div>${links}</nav>
     <a class="button button--dns" href="/tai-dns/">↓ Tải DNS</a>
   </div><button class="nav-backdrop" type="button" aria-label="Đóng menu" tabindex="-1" hidden></button></header>`;
 }
@@ -55,7 +76,7 @@ function footer() {
 }
 
 function publicShell(content) {
-  return `<a class="skip-link" href="#noi-dung">Chuyển đến nội dung chính</a>${header()}<main id="noi-dung">${content}</main>${footer()}<a class="floating-support" href="/lien-he/" aria-label="Liên hệ hỗ trợ">♡ <span>Hỗ trợ</span></a><div id="activity-toast" class="activity-toast" hidden></div><dialog id="welcome-modal" class="welcome-modal" aria-labelledby="welcome-title"><button class="modal-close" type="button" aria-label="Đóng">×</button><span class="eyebrow">Locket Gold · locketgold.info</span><h2 id="welcome-title">Bắt đầu thật đơn giản</h2><p>Chọn gói phù hợp, chỉ dùng Username và xem hướng dẫn thanh toán rõ ràng trước khi chuyển khoản.</p><div><a class="button" href="/len-gold/">Xem các gói</a><a class="text-link" href="/huong-dan/">Cách đặt gói</a></div></dialog>`;
+  return `<a class="skip-link" href="#noi-dung">Chuyển đến nội dung chính</a>${header()}<main id="noi-dung">${content}</main>${footer()}<a class="floating-support" href="/lien-he/" aria-label="Liên hệ hỗ trợ"><img src="/images/lienhe.png" alt="Liên hệ hỗ trợ" width="2048" height="768" decoding="async"></a><div id="activity-toast" class="activity-toast" hidden></div><dialog id="welcome-modal" class="welcome-modal" aria-labelledby="welcome-title"><button class="modal-close" type="button" aria-label="Đóng">×</button><span class="eyebrow">Locket Gold · locketgold.info</span><h2 id="welcome-title">Bắt đầu thật đơn giản</h2><p>Chọn gói phù hợp, chỉ dùng Username và xem hướng dẫn thanh toán rõ ràng trước khi chuyển khoản.</p><div><a class="button button--gold" href="/len-gold/">Xem các gói</a><a class="text-link" href="/huong-dan/">Cách đặt gói</a></div></dialog>`;
 }
 
 function pageHero(kicker, title, description) {
@@ -80,15 +101,15 @@ function checkoutPlanOptions(plans, selectedId) {
 
 const pages = {
   home: () => publicShell(`<section class="hero"><div class="container hero-grid">
-    <div class="hero-copy"><span class="eyebrow">♡ Không cần chia sẻ mật khẩu</span><h1>Nâng trải nghiệm <span>Locket Gold</span>, giữ trọn khoảnh khắc</h1><p>Chọn gói, nhập Username và theo dõi trạng thái ngay trên web. Quy trình rõ ràng cho cả iPhone và Android.</p><div class="hero-actions"><a class="button" href="/len-gold/">Chọn gói Gold →</a><a class="button button--outline" href="/huong-dan/">Xem hướng dẫn</a></div><div class="safe-note"><b>✓</b><span><strong>Quyền riêng tư là ưu tiên</strong><small>Không nhập mật khẩu, OTP hoặc mã khôi phục.</small></span></div></div>
+    <div class="hero-copy"><span class="eyebrow">♡ Không cần chia sẻ mật khẩu</span><h1>Nâng trải nghiệm <span>Locket Gold</span>, giữ trọn khoảnh khắc</h1><p>Chọn gói, nhập Username và theo dõi đơn trên web. Hỗ trợ iPhone và Android.</p><div class="hero-actions"><a class="button" href="/len-gold/">Chọn gói Gold →</a><a class="button button--outline" href="/huong-dan/">Xem hướng dẫn</a></div><div class="safe-note"><b>✓</b><span><strong>Quyền riêng tư là ưu tiên</strong><small>Không nhập mật khẩu, OTP hoặc mã khôi phục.</small></span></div></div>
     <div class="hero-art"><span class="float-chip float-chip--top">✓ Chỉ cần Username</span><img src="/images/banner-locketpro.webp" alt="Banner Locket Gold tông hồng với các nhân vật mèo dễ thương" width="1536" height="1024" fetchpriority="high"><span class="float-chip float-chip--bottom">♡ Hỗ trợ iOS & Android</span></div>
   </div></section>
   <section class="feature-strip"><div class="container"><span>Không yêu cầu đăng nhập để mua</span><span>Mã giảm giá theo phần trăm</span><span>Hướng dẫn sau thanh toán</span><span>Hỗ trợ nhanh chóng</span></div></section>
   <section class="section image-benefits"><div class="container"><div class="section-heading"><span class="eyebrow">Từ bộ ảnh Locket Gold</span><h2>Đơn giản và dễ bắt đầu</h2><p>Những điều bạn cần biết trước khi chọn gói.</p></div><div class="image-benefits-grid">
-    <article class="image-benefit"><span class="benefit-icon">♡</span><div><span class="benefit-label">Tiện lợi</span><h3>Không cần app đặt hàng</h3><p>Chọn gói và gửi đơn trực tiếp trên trình duyệt, không phải cài thêm ứng dụng để mua.</p></div></article>
-    <article class="image-benefit"><span class="benefit-icon">⌁</span><div><span class="benefit-label">Thoải mái</span><h3>Không cần VPN</h3><p>Đặt đơn trên website mà không cần đổi VPN. Nếu gói bạn chọn cần cài DNS, hướng dẫn riêng sẽ hiện rõ.</p></div></article>
-    <article class="image-benefit"><span class="benefit-icon">@</span><div><span class="benefit-label">Riêng tư</span><h3>Chỉ cần Username</h3><p>Nhập chính xác Username Locket. Biểu mẫu không hỏi mật khẩu, OTP hay mã khôi phục.</p></div></article>
-    <article class="image-benefit"><span class="benefit-icon">✓</span><div><span class="benefit-label">An toàn</span><h3>Không yêu cầu mật khẩu</h3><p>Thông tin hồ sơ chỉ được tra cứu khi API tương ứng đã được tích hợp; hiện website chưa xác minh avatar hay tên tài khoản.</p></div></article>
+    <article class="image-benefit"><img src="/images/noapp.png" alt="Không cần app đặt hàng" loading="lazy" decoding="async"><div><span class="benefit-label">Tiện lợi</span><h3>Không cần app đặt hàng</h3><p>Chọn gói và gửi đơn trực tiếp trên trình duyệt, không phải cài thêm ứng dụng để mua.</p></div></article>
+    <article class="image-benefit"><img src="/images/nodns.png" alt="Minh họa đặt gói trên website" loading="lazy" decoding="async"><div><span class="benefit-label">Thoải mái</span><h3>Không cần VPN</h3><p>Đặt đơn trên website mà không cần đổi VPN. Nếu gói bạn chọn cần cài DNS, hướng dẫn riêng sẽ hiện rõ.</p></div></article>
+    <article class="image-benefit"><img src="/images/username.png" alt="Chỉ cần Username" loading="lazy" decoding="async"><div><span class="benefit-label">Riêng tư</span><h3>Chỉ cần Username</h3><p>Nhập chính xác Username Locket. Biểu mẫu không hỏi mật khẩu, OTP hay mã khôi phục.</p></div></article>
+    <article class="image-benefit"><img src="/images/antoan.png" alt="Không yêu cầu mật khẩu" loading="lazy" decoding="async"><div><span class="benefit-label">An toàn</span><h3>Không yêu cầu mật khẩu</h3><p>Chỉ cung cấp Username và kênh liên hệ để nhận hỗ trợ. Luôn giữ riêng mật khẩu, OTP và mã khôi phục của bạn.</p></div></article>
   </div></div></section>
   <section class="section"><div class="container"><div class="section-heading"><span class="eyebrow">Bảng giá minh bạch</span><h2>Bốn lựa chọn cho từng nhu cầu</h2><p>Giá hiển thị trước khi xác nhận, không có chi phí ẩn.</p></div><div id="home-plans">${planCards()}</div></div></section>
   <section class="section section--tint"><div class="container two-col"><div><span class="eyebrow">Quy trình</span><h2>Bốn bước rõ ràng</h2><p>Không cần tạo tài khoản khách hàng. Bước xác nhận chỉ giúp bạn tự kiểm tra Username đã nhập, chưa phải tra cứu tài khoản Locket.</p></div><ol class="step-list"><li><b>01</b><div><strong>Nhập thông tin</strong><span>Nhập Username và kênh liên hệ; không nhập mật khẩu hay OTP.</span></div></li><li><b>02</b><div><strong>Tự xác nhận</strong><span>Kiểm tra lại Username trước khi tạo đơn.</span></div></li><li><b>03</b><div><strong>Chọn gói</strong><span>Kiểm tra nền tảng, thời hạn và số tiền.</span></div></li><li><b>04</b><div><strong>Thanh toán & theo dõi</strong><span>Nhận mã đơn và hướng dẫn sau khi tạo đơn.</span></div></li></ol></div></section>
@@ -96,11 +117,11 @@ const pages = {
 
   pricing: () => publicShell(`${pageHero("Lên Gold", "Chọn gói phù hợp", "Bốn gói cho iOS và Android, mua trực tiếp mà không cần đăng nhập.")}<section class="section section--compact"><div class="container"><div id="all-plans">${planCards()}</div><p class="info-note">ⓘ Gói Android sẽ mở nút tải APK sau khi quản trị viên tải tệp hoặc cấu hình đường dẫn.</p><div class="pricing-visual"><div><span class="eyebrow">Locket Gold</span><h2>Một chút sắc hồng cho mỗi khoảnh khắc</h2><p>Hình minh họa từ bộ thiết kế của locketgold.info; quyền lợi thực tế phụ thuộc vào gói bạn chọn.</p></div><img src="/images/khungavatar.png" alt="Khung avatar mèo nơ hồng trong bộ thiết kế" width="1024" height="1024" loading="lazy" decoding="async"></div></div></section>`),
 
-  trust: () => publicShell(`${pageHero("Uy tín & an toàn", "Rõ ràng ở từng bước", "Chúng tôi chỉ yêu cầu dữ liệu cần thiết để xử lý đơn và không bao giờ hỏi mật khẩu hoặc OTP.")}<section class="section section--compact"><div class="container trust-grid">
+  trust: () => publicShell(`${pageHero("Uy tín & feedback", "Trải nghiệm từ khách hàng", "Khám phá hình ảnh phản hồi và những cam kết khi đặt gói tại Locket Gold.")}${feedbackGallery()}<section class="section section--compact"><div class="container"><div class="trust-grid">
     <article><span>🔒</span><h2>Không thu mật khẩu</h2><p>Biểu mẫu chỉ nhận Username Locket và thông tin liên hệ bạn chủ động cung cấp.</p></article>
     <article><span>🧾</span><h2>Có mã đơn đối soát</h2><p>Mỗi yêu cầu được gắn mã riêng để tra cứu trạng thái và khớp giao dịch.</p></article>
     <article><span>⚙</span><h2>Bí mật nằm ở máy chủ</h2><p>Khóa API và cấu hình thanh toán không được đưa vào mã frontend hay màn hình quản trị.</p></article>
-    <article><span>✓</span><h2>Thông báo có thật</h2><p>Thông báo hoạt động chỉ xuất hiện từ đơn đã xác nhận, đồng thời che Username.</p></article>
+    <article><span>✓</span><h2>Thông tin rõ ràng</h2><p>Giao dịch đã xác nhận được che Username; thông báo mẫu luôn có nhãn minh họa.</p></article>
   </div><div class="warning-card"><strong>Lưu ý an toàn</strong><p>Nếu bất kỳ ai yêu cầu mật khẩu, OTP, mã khôi phục hoặc quyền điều khiển thiết bị, hãy dừng lại và liên hệ hỗ trợ.</p></div></div></section>`),
 
   posts: () => publicShell(`${pageHero("Blog & tin tức", "Kiến thức Locket dễ hiểu", "Bài viết do quản trị viên xuất bản sẽ tự động hiển thị tại đây.")}<section class="section section--compact"><div class="container"><div id="post-list" class="post-grid">${postCards(fallbackPosts)}</div></div></section>`),
@@ -145,7 +166,7 @@ const pages = {
 };
 
 function postCards(posts) {
-  return posts.map((post) => `<article class="post-card"><span>${escapeHtml(formatDate(post.published_at))}</span><h2>${escapeHtml(post.title)}</h2><p>${escapeHtml(post.excerpt || "")}</p><a href="/bai-viet/?bai=${encodeURIComponent(post.slug || "")}">Đọc bài →</a></article>`).join("");
+  return posts.map((post) => `<article class="post-card"><span>${escapeHtml(formatDate(post.published_at))}</span><h2><a href="/bai-viet/?bai=${encodeURIComponent(post.slug || "")}">${escapeHtml(post.title)}</a></h2><p>${escapeHtml(post.excerpt || "")}</p><a href="/bai-viet/?bai=${encodeURIComponent(post.slug || "")}">Đọc bài →</a></article>`).join("");
 }
 
 function formatDate(value) {
@@ -184,17 +205,50 @@ function initNavigation() {
   const nav = document.querySelector(".main-nav");
   const backdrop = document.querySelector(".nav-backdrop");
   if (!toggle || !nav || !backdrop) return;
+  const mobile = window.matchMedia("(max-width: 1100px)");
+  const outside = [...document.querySelectorAll("main, .site-footer, .floating-support")];
   const setOpen = (open) => {
+    open = open && mobile.matches;
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
     nav.classList.toggle("is-open", open);
     backdrop.hidden = !open;
     document.body.classList.toggle("nav-open", open);
+    nav.inert = mobile.matches && !open;
+    outside.forEach((element) => { element.inert = open; });
+    if (open) nav.querySelector(".nav-close").focus();
   };
   toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
   backdrop.addEventListener("click", () => setOpen(false));
+  nav.querySelector(".nav-close").addEventListener("click", () => { setOpen(false); toggle.focus(); });
   nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setOpen(false)));
-  document.addEventListener("keydown", (event) => { if (event.key === "Escape") setOpen(false); });
+  document.addEventListener("keydown", (event) => {
+    if (toggle.getAttribute("aria-expanded") !== "true") return;
+    if (event.key === "Escape") { setOpen(false); toggle.focus(); }
+    if (event.key === "Tab") {
+      const controls = [toggle, ...nav.querySelectorAll("button, a")];
+      const current = controls.indexOf(document.activeElement);
+      if ((event.shiftKey && current === 0) || (!event.shiftKey && current === controls.length - 1)) {
+        event.preventDefault();
+        controls[event.shiftKey ? controls.length - 1 : 0].focus();
+      }
+    }
+  });
+  mobile.addEventListener("change", () => setOpen(false));
+  setOpen(false);
+}
+
+function initFeedbackGallery() {
+  const viewer = document.querySelector("#feedback-viewer");
+  if (!viewer) return;
+  document.querySelectorAll("[data-feedback-src]").forEach((button) => button.addEventListener("click", () => {
+    viewer.querySelector("img").src = button.dataset.feedbackSrc;
+    viewer.querySelector("img").alt = button.dataset.feedbackCaption;
+    viewer.querySelector("p").textContent = button.dataset.feedbackCaption;
+    viewer.showModal();
+  }));
+  viewer.querySelector("button").addEventListener("click", () => viewer.close());
+  viewer.addEventListener("click", (event) => { if (event.target === viewer) viewer.close(); });
 }
 
 function initGuide() {
@@ -264,18 +318,27 @@ async function loadPlans() {
 async function loadPosts() {
   const list = document.querySelector("#post-list");
   if (!list) return;
+  const slug = new URLSearchParams(location.search).get("bai");
+  const localPost = fallbackPosts.find((post) => post.slug === slug);
+  const renderPost = (post) => {
+    list.className = "article-view";
+    list.innerHTML = `<article><a class="text-link" href="/bai-viet/">← Tất cả bài viết</a><span>${escapeHtml(formatDate(post.published_at))}</span><h2>${escapeHtml(post.title)}</h2><p class="article-lead">${escapeHtml(post.excerpt)}</p><div>${String(post.content || "").split(/\n+/).filter(Boolean).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}</div></article>`;
+    document.title = `${post.title} | Locket Gold`;
+  };
+  if (localPost) renderPost(localPost);
+  else if (slug) { list.className = "article-view"; list.innerHTML = '<p role="status">Đang tải bài viết…</p>'; }
   try {
-    const slug = new URLSearchParams(location.search).get("bai");
     if (slug) {
       const post = await api(`/api/posts/${encodeURIComponent(slug)}`);
-      list.className = "article-view";
-      list.innerHTML = `<article><a class="text-link" href="/bai-viet/">← Tất cả bài viết</a><span>${escapeHtml(formatDate(post.published_at))}</span><h2>${escapeHtml(post.title)}</h2><p class="article-lead">${escapeHtml(post.excerpt)}</p><div>${String(post.content || "").split(/\n+/).filter(Boolean).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}</div></article>`;
-      document.title = `${post.title} | Locket Gold`;
+      if (!post.title || !post.content) throw new Error("Bài viết chưa có nội dung.");
+      renderPost(post);
       return;
     }
     const { posts } = await api("/api/posts");
     if (posts?.length) list.innerHTML = postCards(posts);
-  } catch { /* Keep editorial fallback. */ }
+  } catch {
+    if (slug && !localPost) list.innerHTML = '<article><h2>Chưa tìm thấy bài viết</h2><p>Bài viết có thể chưa được xuất bản hoặc tạm thời không tải được.</p><a class="text-link" href="/bai-viet/">← Tất cả bài viết</a></article>';
+  }
 }
 
 async function loadDownloads() {
@@ -300,9 +363,10 @@ function initWelcomeModal() {
   if (!modal || sessionStorage.getItem("welcome-modal-dismissed")) return;
   const close = () => { modal.close(); sessionStorage.setItem("welcome-modal-dismissed", "1"); };
   modal.querySelector(".modal-close").addEventListener("click", close);
+  modal.addEventListener("cancel", close);
   modal.addEventListener("click", (event) => { if (event.target === modal) close(); });
   modal.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
-  window.setTimeout(() => { if (!modal.open) modal.showModal(); }, 8000);
+  window.requestAnimationFrame(() => { if (!modal.open) modal.showModal(); });
 }
 
 function enableDownload(selector, url, label) {
@@ -633,19 +697,29 @@ function bindAdminForms() {
 async function showActivity() {
   const toast = document.querySelector("#activity-toast");
   if (!toast) return;
-  let item = null;
+  const welcome = document.querySelector("#welcome-modal");
+  if (welcome?.open) {
+    welcome.addEventListener("close", showActivity, { once: true });
+    return;
+  }
+  let dismissed = false;
+  const render = (item) => {
+    if (dismissed) return;
+    const isSample = !item;
+    toast.classList.toggle("activity-toast--demo", isSample);
+    const avatar = '<span class="activity-icon" aria-hidden="true"><img src="/images/huyhieu.png" alt="" width="48" height="48"></span>';
+    toast.innerHTML = isSample
+      ? `<button aria-label="Đóng">×</button>${avatar}<div class="activity-copy"><div><strong>Thông báo minh họa</strong><time>Mẫu giao diện</time></div><p>Ví dụ: khách hàng nâng cấp <b>Gói 1 Năm</b>. Đây không phải giao dịch thật.</p></div>`
+      : `<button aria-label="Đóng">×</button>${avatar}<div class="activity-copy"><div><strong>Giao dịch đã xác thực</strong><time>${escapeHtml(relativeTime(item.paid_at))}</time></div><p><b>${escapeHtml(item.username)}</b> vừa nâng cấp <b>${escapeHtml(item.plan_name)}</b></p></div>`;
+    toast.hidden = false;
+    toast.querySelector("button").addEventListener("click", () => { dismissed = true; toast.hidden = true; });
+  };
+  render(null);
+  window.setTimeout(() => { dismissed = true; toast.hidden = true; }, 9000);
   try {
-    const { activities } = await api("/api/activity");
-    if (activities?.length) item = activities[Math.floor(Math.random() * activities.length)];
-  } catch { /* Show a clearly labeled sample if the activity service is unavailable. */ }
-  const isSample = !item;
-  toast.classList.toggle("activity-toast--demo", isSample);
-  toast.innerHTML = isSample
-    ? `<button aria-label="Đóng">×</button><span class="activity-icon" aria-hidden="true">LG</span><div class="activity-copy"><div><strong>Thông báo minh họa</strong><time>Mẫu giao diện</time></div><p>Ví dụ: khách hàng nâng cấp <b>Gói 1 Năm</b>. Đây không phải giao dịch thật.</p></div>`
-    : `<button aria-label="Đóng">×</button><span class="activity-icon" aria-hidden="true">LG</span><div class="activity-copy"><div><strong>Giao dịch đã xác thực</strong><time>${escapeHtml(relativeTime(item.paid_at))}</time></div><p><b>${escapeHtml(item.username)}</b> vừa nâng cấp <b>${escapeHtml(item.plan_name)}</b></p></div>`;
-  toast.hidden = false;
-  toast.querySelector("button").addEventListener("click", () => { toast.hidden = true; });
-  window.setTimeout(() => { toast.hidden = true; }, 9000);
+    const { activities } = await api("/api/activity", { signal: AbortSignal.timeout(2500) });
+    if (activities?.length) render(activities[Math.floor(Math.random() * activities.length)]);
+  } catch { /* The labeled sample is already visible. */ }
 }
 
 function relativeTime(value) {
@@ -661,6 +735,7 @@ function relativeTime(value) {
 }
 
 initNavigation();
+initFeedbackGallery();
 initGuide();
 loadPlans();
 loadPosts();
@@ -669,4 +744,4 @@ initWelcomeModal();
 initCheckout();
 initCtv();
 initAdmin();
-window.setTimeout(showActivity, 3500);
+window.requestAnimationFrame(showActivity);
