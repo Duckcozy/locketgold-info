@@ -300,6 +300,9 @@ th { color: var(--muted); font-size: .6rem; text-transform: uppercase; }
 .activity-icon { position: relative; display: grid; width: 48px; height: 48px; place-items: center; color: #fff; font-size: .76rem; font-weight: 900; background: linear-gradient(145deg, #ff94bd, #bd215c); border: 2px solid #ffe8f1; border-radius: 50%; }
 .activity-icon::after { position: absolute; right: -3px; bottom: -3px; display: grid; width: 19px; height: 19px; place-items: center; content: "✓"; color: #fff; font-size: .68rem; background: var(--green); border: 2px solid #fff; border-radius: 50%; }
 .activity-toast strong { color: #26755f; font-size: .78rem; }
+.activity-toast--demo { border-style: dashed; }
+.activity-toast--demo .activity-icon::after { content: "i"; background: var(--pink-600); }
+.activity-toast--demo strong { color: var(--pink-700); }
 .activity-copy > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
 .activity-copy time { color: var(--muted); font-size: .72rem; }
 .activity-toast p { margin: 5px 0 0; font-size: .82rem; line-height: 1.45; }

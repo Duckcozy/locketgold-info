@@ -632,15 +632,19 @@ function bindAdminForms() {
 async function showActivity() {
   const toast = document.querySelector("#activity-toast");
   if (!toast) return;
+  let item = null;
   try {
     const { activities } = await api("/api/activity");
-    if (!activities?.length) return;
-    const item = activities[Math.floor(Math.random() * activities.length)];
-    toast.innerHTML = `<button aria-label="Đóng">×</button><span class="activity-icon" aria-hidden="true">LG</span><div class="activity-copy"><div><strong>Giao dịch đã xác thực</strong><time>${escapeHtml(relativeTime(item.paid_at))}</time></div><p><b>${escapeHtml(item.username)}</b> vừa nâng cấp <b>${escapeHtml(item.plan_name)}</b></p></div>`;
-    toast.hidden = false;
-    toast.querySelector("button").addEventListener("click", () => { toast.hidden = true; });
-    window.setTimeout(() => { toast.hidden = true; }, 9000);
-  } catch { /* Never invent activity when there are no verified orders. */ }
+    if (activities?.length) item = activities[Math.floor(Math.random() * activities.length)];
+  } catch { /* Show a clearly labeled sample if the activity service is unavailable. */ }
+  const isSample = !item;
+  toast.classList.toggle("activity-toast--demo", isSample);
+  toast.innerHTML = isSample
+    ? `<button aria-label="Đóng">×</button><span class="activity-icon" aria-hidden="true">LG</span><div class="activity-copy"><div><strong>Thông báo minh họa</strong><time>Mẫu giao diện</time></div><p>Ví dụ: khách hàng nâng cấp <b>Gói 1 Năm</b>. Đây không phải giao dịch thật.</p></div>`
+    : `<button aria-label="Đóng">×</button><span class="activity-icon" aria-hidden="true">LG</span><div class="activity-copy"><div><strong>Giao dịch đã xác thực</strong><time>${escapeHtml(relativeTime(item.paid_at))}</time></div><p><b>${escapeHtml(item.username)}</b> vừa nâng cấp <b>${escapeHtml(item.plan_name)}</b></p></div>`;
+  toast.hidden = false;
+  toast.querySelector("button").addEventListener("click", () => { toast.hidden = true; });
+  window.setTimeout(() => { toast.hidden = true; }, 9000);
 }
 
 function relativeTime(value) {
