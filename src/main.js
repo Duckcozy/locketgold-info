@@ -27,12 +27,17 @@ const fallbackPosts = [
   { slug: "chon-goi-phu-hop", title: "Nên chọn gói Gold nào?", excerpt: "So sánh thời hạn và nền tảng để chọn đúng gói cho thiết bị đang sử dụng.", published_at: "2026-09-28", content: "Chọn đúng nền tảng\nTrước tiên, xác định bạn đang dùng iPhone (iOS) hay Android. Chọn gói tương ứng với thiết bị và đọc hướng dẫn dành cho nền tảng đó trước khi thanh toán.\nGói 1 tháng\nPhù hợp khi bạn muốn thử trải nghiệm trong thời gian ngắn. Kiểm tra giá và thời hạn đang hiển thị trên bảng giá.\nGói 1 năm\nPhù hợp khi bạn dự định dùng lâu hơn. So sánh tổng chi phí với lựa chọn theo tháng trước khi quyết định.\nGói vĩnh viễn\nĐọc rõ quyền lợi và điều kiện áp dụng của gói. Nếu chưa rõ ý nghĩa thời hạn hoặc khả năng hỗ trợ khi đổi thiết bị, hỏi qua trang Liên hệ trước khi đặt.\nKiểm tra lần cuối\nỞ bước rà soát đơn, đối chiếu nền tảng, thời hạn, Username và số tiền. Giá trên đơn là mức giá cần kiểm tra trước khi chuyển khoản." },
 ];
 
-// Add customer-owned screenshots here when available; each opens in the gallery viewer.
-const feedbackImages = [];
+// Reference screenshots retain their source; do not present them as our customer reviews.
+const feedbackImages = [
+  { src: "/images/feedback-reference/locketpro-1.jpeg", caption: "Ảnh tham khảo 01 · Nguồn: locketpro.com" },
+  { src: "/images/feedback-reference/locketpro-2.jpeg", caption: "Ảnh tham khảo 02 · Nguồn: locketpro.com" },
+  { src: "/images/feedback-reference/locketpro-3.webp", caption: "Ảnh tham khảo 03 · Nguồn: locketpro.com" },
+  { src: "/images/feedback-reference/locketpro-4.webp", caption: "Ảnh tham khảo 04 · Nguồn: locketpro.com" },
+];
 
 function feedbackGallery() {
   const items = feedbackImages.length ? feedbackImages : Array.from({ length: 4 }, (_, index) => ({ caption: `Ảnh feedback ${String(index + 1).padStart(2, "0")}` }));
-  return `<section class="section section--compact"><div class="container"><div class="section-heading"><span class="eyebrow">Khách hàng chia sẻ</span><h2>Feedback & trải nghiệm</h2><p>Những hình ảnh phản hồi từ khách hàng sẽ được cập nhật tại đây.</p></div><div class="feedback-grid">${items.map((item) => `<article class="feedback-card">${item.src ? `<button class="feedback-image" type="button" data-feedback-src="${escapeHtml(item.src)}" data-feedback-caption="${escapeHtml(item.caption)}" aria-label="Xem đầy đủ ${escapeHtml(item.caption)}"><img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.caption)}" loading="lazy" decoding="async"></button>` : '<div class="feedback-placeholder"><span aria-hidden="true">▧</span><span>Đang cập nhật ảnh</span></div>'}<div class="feedback-caption"><strong>${escapeHtml(item.caption)}</strong><span>${item.src ? "Chạm để xem ảnh đầy đủ" : "Sắp có hình ảnh mới"}</span></div></article>`).join("")}</div></div></section><dialog id="feedback-viewer" class="feedback-viewer" aria-label="Xem ảnh feedback"><button class="modal-close" type="button" aria-label="Đóng ảnh">×</button><img alt=""><p></p></dialog>`;
+  return `<section class="section section--compact"><div class="container"><div class="section-heading"><span class="eyebrow">Hình ảnh tham khảo</span><h2>Feedback & trải nghiệm</h2><p>Ảnh từ <a class="text-link" href="https://locketpro.com/uy-tin" target="_blank" rel="noopener noreferrer">locketpro.com</a>, không phải đánh giá của khách hàng locketgold.info. Bấm vào ảnh để xem đầy đủ.</p></div><div class="feedback-grid">${items.map((item) => `<article class="feedback-card">${item.src ? `<button class="feedback-image" type="button" data-feedback-src="${escapeHtml(item.src)}" data-feedback-caption="${escapeHtml(item.caption)}" aria-label="Xem đầy đủ ${escapeHtml(item.caption)}"><img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.caption)}" loading="lazy" decoding="async"></button>` : '<div class="feedback-placeholder"><span aria-hidden="true">▧</span><span>Đang cập nhật ảnh</span></div>'}<div class="feedback-caption"><strong>${escapeHtml(item.caption)}</strong><span>${item.src ? "Chạm để xem ảnh đầy đủ" : "Sắp có hình ảnh mới"}</span></div></article>`).join("")}</div></div></section><dialog id="feedback-viewer" class="feedback-viewer" aria-label="Xem ảnh feedback"><button class="modal-close" type="button" aria-label="Đóng ảnh">×</button><img alt=""><p></p></dialog>`;
 }
 
 function navIcon(key) {
@@ -198,6 +203,19 @@ function adminPage() {
 
 app.innerHTML = (pages[page] || pages.home)();
 document.querySelector("#current-year")?.replaceChildren(String(new Date().getFullYear()));
+
+const privacyNote = document.querySelector(".hero-copy .safe-note");
+if (privacyNote) {
+  const heroCopy = privacyNote.parentElement;
+  const siteFooter = document.querySelector(".site-footer");
+  const mobilePrivacy = window.matchMedia("(max-width: 640px)");
+  const positionPrivacyNote = () => {
+    privacyNote.classList.toggle("container", mobilePrivacy.matches);
+    (mobilePrivacy.matches ? siteFooter : heroCopy).append(privacyNote);
+  };
+  positionPrivacyNote();
+  mobilePrivacy.addEventListener("change", positionPrivacyNote);
+}
 
 function initNavigation() {
   const toggle = document.querySelector(".menu-toggle");
