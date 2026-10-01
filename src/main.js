@@ -104,9 +104,17 @@ function checkoutPlanOptions(plans, selectedId) {
   </label>`).join("");
 }
 
+function heroBow() {
+  return '<svg viewBox="0 0 48 40" fill="none"><path d="M21 19C10 0 3 4 4 18c-1 13 9 16 18 6M27 20C37 5 46 9 43 23c-1 12-11 12-17 3" fill="#ff83b6" stroke="#b82d69" stroke-width="2.5"/><path d="m11 13 7 7m16-4-5 6" stroke="#f64b93" stroke-width="3" stroke-linecap="round"/><ellipse cx="24" cy="23" rx="7" ry="8" fill="#ff5b9d" stroke="#b82d69" stroke-width="2.5"/></svg>';
+}
+
+function heroHeart() {
+  return '<svg viewBox="0 0 40 40"><path d="M20 34S3 24 3 13C3 3 16 2 20 11 24 2 37 3 37 13c0 11-17 21-17 21Z" fill="#ff91bd" stroke="#d54482" stroke-width="2.5"/><path d="M9 14c0-4 3-6 6-5" fill="none" stroke="#ffd5e7" stroke-width="3" stroke-linecap="round"/></svg>';
+}
+
 const pages = {
   home: () => publicShell(`<section class="hero"><div class="container hero-grid">
-    <div class="hero-copy"><span class="eyebrow">♡ Không cần chia sẻ mật khẩu</span><h1>Nâng trải nghiệm <span>Locket Gold</span>, giữ trọn khoảnh khắc</h1><p>Chọn gói, nhập Username và theo dõi đơn trên web. Hỗ trợ iPhone và Android.</p><div class="hero-actions"><a class="button" href="/len-gold/">Chọn gói Gold →</a><a class="button button--outline" href="/huong-dan/">Xem hướng dẫn</a></div><div class="safe-note"><b>✓</b><span><strong>Quyền riêng tư là ưu tiên</strong><small>Không nhập mật khẩu, OTP hoặc mã khôi phục.</small></span></div></div>
+    <div class="hero-copy"><span class="eyebrow"><span aria-hidden="true">♡</span> Không cần chia sẻ mật khẩu<span class="hero-bow hero-bow--badge" aria-hidden="true">${heroBow()}</span></span><h1><span class="hero-title-line">Nâng trải nghiệm</span><span class="hero-title-line"><span class="hero-title-gold">Locket Gold<span class="hero-bow hero-bow--title" aria-hidden="true">${heroBow()}</span>,</span> giữ</span><span class="hero-title-line">trọn khoảnh khắc</span><span class="hero-heart hero-heart--one" aria-hidden="true">${heroHeart()}</span><span class="hero-heart hero-heart--two" aria-hidden="true">${heroHeart()}</span><span class="hero-heart hero-heart--three" aria-hidden="true">${heroHeart()}</span></h1><p>Chọn gói, nhập Username và theo dõi đơn trên web. Hỗ trợ iPhone và Android.</p><div class="hero-actions"><a class="button" href="/len-gold/"><span class="hero-bow hero-bow--button" aria-hidden="true">${heroBow()}</span>Chọn gói Gold →</a><a class="button button--outline" href="/huong-dan/">Xem hướng dẫn <span class="hero-button-heart" aria-hidden="true">♥</span></a></div><div class="safe-note"><b>✓</b><span><strong>Quyền riêng tư là ưu tiên</strong><small>Không nhập mật khẩu, OTP hoặc mã khôi phục.</small></span></div></div>
     <div class="hero-art"><span class="float-chip float-chip--top">✓ Chỉ cần Username</span><img src="/images/banner-locketpro.webp" alt="Banner Locket Gold tông hồng với các nhân vật mèo dễ thương" width="1536" height="1024" fetchpriority="high"><span class="float-chip float-chip--bottom">♡ Hỗ trợ iOS & Android</span></div>
   </div></section>
   <section class="feature-strip"><div class="container"><span>Không yêu cầu đăng nhập để mua</span><span>Mã giảm giá theo phần trăm</span><span>Hướng dẫn sau thanh toán</span><span>Hỗ trợ nhanh chóng</span></div></section>

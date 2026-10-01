@@ -1,3 +1,6 @@
+@font-face { font-family: "Baloo 2"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/baloo-2-semi-bold.ttf") format("truetype"); }
+@font-face { font-family: "Baloo 2"; font-style: normal; font-weight: 800; font-display: swap; src: url("/fonts/baloo-2-extra-bold.ttf") format("truetype"); }
+
 :root {
   --pink-50: #fff7fa;
   --pink-100: #ffe8f1;
@@ -73,12 +76,31 @@ h1, h2, h3, p { margin-top: 0; }
 
 .hero { position: relative; overflow: hidden; padding: 85px 0 72px; background: radial-gradient(circle at 88% 20%, #ffddea 0, transparent 31rem), radial-gradient(circle at 7% 90%, #fff0df 0, transparent 23rem), #fffafc; }
 .hero::after { position: absolute; top: 40px; left: 45%; width: 220px; height: 220px; content: ""; background-image: radial-gradient(var(--pink-200) 1.2px, transparent 1.2px); background-size: 15px 15px; opacity: .5; }
-.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr .9fr; align-items: center; gap: 65px; }
-.hero-copy h1 { max-width: 720px; margin: 19px 0 21px; font-size: clamp(2.85rem, 4.7vw, 4.3rem); line-height: 1.08; letter-spacing: -.05em; }
-.hero-copy h1 span { color: var(--pink-600); }
-.hero-copy > p { max-width: 670px; color: var(--muted); font-size: 1rem; line-height: 1.8; }
+.hero-grid { position: relative; z-index: 1; display: grid; width: min(calc(100% - 80px), 1380px); grid-template-columns: 1.15fr 1fr; align-items: center; gap: 60px; }
+.hero-copy { min-width: 0; font-family: "Baloo 2", ui-rounded, system-ui, sans-serif; }
+.hero-copy h1 { position: relative; margin: 20px 0 22px; color: #371b27; font-size: clamp(54px, 5.25vw, 90px); font-weight: 800; line-height: 1.1; letter-spacing: -.025em; }
+.hero-title-line { display: block; white-space: nowrap; }
+.hero-title-gold { position: relative; color: #ef4389; text-shadow: 0 3px 0 #fbd4e4; }
+.hero-copy > p { max-width: 700px; margin-bottom: 0; color: #997884; font-size: 22px; font-weight: 600; line-height: 1.55; }
+.hero-copy > .eyebrow { position: relative; padding: 7px 18px; gap: 7px; font-size: 18px; line-height: 1.5; letter-spacing: .01em; background: linear-gradient(#fff8fc, #ffe5ef); border: 2px solid #efcedd; box-shadow: inset 0 0 0 3px #fff3f8, 0 3px 10px #e5aac21f; }
+.hero-copy > .eyebrow > span:first-child { font-size: 24px; line-height: 1; }
+.hero-bow { position: absolute; display: block; width: 42px; height: 36px; pointer-events: none; }
+.hero-bow svg, .hero-heart svg { display: block; width: 100%; height: 100%; }
+.hero-bow--badge { top: -20px; right: -14px; transform: rotate(22deg); }
+.hero-bow--title { top: -6px; right: -9px; width: 58px; height: 49px; transform: rotate(17deg); }
+.hero-bow--button { top: -17px; left: -7px; width: 35px; height: 30px; transform: rotate(-28deg); }
+.hero-heart { position: absolute; width: 34px; height: 34px; pointer-events: none; }
+.hero-heart--one { top: 22px; left: -51px; width: 44px; height: 44px; transform: rotate(-23deg); }
+.hero-heart--two { top: 39%; left: -32px; width: 27px; height: 27px; transform: rotate(-17deg); }
+.hero-heart--three { right: -16px; bottom: 20%; width: 30px; height: 30px; transform: rotate(16deg); }
 .eyebrow { display: inline-flex; width: max-content; align-items: center; padding: 7px 12px; color: var(--pink-700); font-size: .75rem; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; background: var(--pink-100); border: 1px solid var(--pink-200); border-radius: 999px; }
 .hero-actions { display: flex; margin-top: 30px; gap: 12px; }
+.hero-actions .button { position: relative; min-height: 58px; padding: 9px 30px; font-size: 25px; font-weight: 800; line-height: 1.25; border: 2px solid #dbb555; border-radius: 23px; box-shadow: inset 0 0 0 3px #fff0b6, 0 6px 15px #ca931e1f; }
+.hero-actions .button--outline { color: #ce3573; border-color: #edd2de; box-shadow: inset 0 0 0 3px #fff7fb; }
+.hero-button-heart { margin-left: 9px; color: #ed72a3; font-size: 20px; }
+.hero-copy .safe-note b { width: 48px; height: 48px; flex-shrink: 0; font-family: system-ui, sans-serif; font-size: 28px; background: linear-gradient(135deg, #24bca0, #139c78); box-shadow: inset 0 0 0 4px #ffffff1a; }
+.hero-copy .safe-note strong { font-size: 19px; line-height: 1.3; }
+.hero-copy .safe-note small { font-size: 16px; line-height: 1.4; }
 .safe-note { display: flex; align-items: center; margin-top: 28px; gap: 12px; }
 .safe-note b { display: grid; width: 38px; height: 38px; place-items: center; color: #fff; background: var(--green); border-radius: 50%; }
 .safe-note span { display: grid; }
@@ -434,6 +456,7 @@ body:not([data-page="admin"]) :is(.form-card label small, .privacy-line, .bank-b
   .checkout-progress { gap: 7px; }
   .checkout-progress li { flex-direction: column; text-align: center; }
   .hero-copy { text-align: center; }
+  .hero-copy h1 { width: max-content; max-width: 100%; margin-inline: auto; font-size: clamp(44px, 7.5vw, 76px); }
   .hero-copy > p { margin-inline: auto; }
   .hero-actions, .safe-note { justify-content: center; }
   .hero-art { width: min(100%, 600px); margin-inline: auto; }
@@ -456,12 +479,24 @@ body:not([data-page="admin"]) :is(.form-card label small, .privacy-line, .bank-b
   .button--dns { padding: 8px 10px; font-size: .8rem; }
   .hero { display: grid; min-height: calc(100svh - 70px); align-items: center; padding: 24px 0 26px; }
   .hero-grid { width: min(calc(100% - 32px), 500px); gap: 20px; }
-  .hero-copy h1 { margin: 14px 0; font-size: clamp(2rem, 8.1vw, 2.7rem); line-height: 1.1; letter-spacing: -.04em; }
+  .hero-copy h1 { margin: 18px auto; font-size: clamp(30px, 10.5vw, 49px); line-height: 1.16; letter-spacing: -.025em; }
   .hero-copy > p { margin-bottom: 16px; font-size: 1rem; line-height: 1.55; }
   .hero-copy .eyebrow { max-width: 100%; font-size: .75rem; letter-spacing: .02em; }
+  .hero-copy > .eyebrow { padding: 6px 10px; gap: 4px; }
+  .hero-copy > .eyebrow > span:first-child { font-size: 19px; }
+  .hero-bow--badge { top: -13px; right: -7px; width: 28px; height: 24px; }
+  .hero-bow--title { top: -9px; right: -5px; width: 30px; height: 26px; }
+  .hero-heart--one { top: 8px; left: -18px; width: 21px; height: 21px; }
+  .hero-heart--two { left: -10px; width: 15px; height: 15px; }
+  .hero-heart--three { right: -11px; width: 17px; height: 17px; }
   .hero-actions { display: grid; grid-template-columns: 1fr 1fr; margin-top: 18px; gap: 8px; }
   .hero-actions .button { width: 100%; }
   .hero-actions .button { padding: 11px 8px; font-size: .87rem; }
+  .hero-actions .button { min-height: 48px; border-radius: 18px; }
+  .hero-button-heart { margin-left: 5px; font-size: 14px; }
+  .hero-copy .safe-note strong { font-size: 15px; }
+  .hero-copy .safe-note small { font-size: 12px; }
+  .hero-copy .safe-note b { width: 36px; height: 36px; font-size: 23px; }
   .safe-note { margin-top: 14px; gap: 8px; }
   .site-footer > .safe-note { margin-top: 24px; text-align: left; }
   .site-footer > .safe-note b { flex-shrink: 0; }
