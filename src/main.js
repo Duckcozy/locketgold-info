@@ -5,13 +5,13 @@ const page = document.body.dataset.page || "home";
 const app = document.querySelector("#app");
 
 const navItems = [
-  ["home", "/", "Trang chủ"],
-  ["pricing", "/len-gold/", "Lên Gold"],
-  ["trust", "/uy-tin/", "Uy tín"],
-  ["posts", "/bai-viet/", "Bài viết"],
-  ["guide", "/huong-dan/", "Hướng dẫn"],
-  ["ctv", "/cong-tac-vien/", "Cộng tác viên"],
-  ["contact", "/lien-he/", "Liên hệ"],
+  ["home", "/", "Trang chủ", "⌂"],
+  ["pricing", "/len-gold/", "Lên Gold", "♛"],
+  ["trust", "/uy-tin/", "Uy tín", "✧"],
+  ["posts", "/bai-viet/", "Bài viết", "▤"],
+  ["guide", "/huong-dan/", "Hướng dẫn", "▣"],
+  ["ctv", "/cong-tac-vien/", "Cộng tác viên", "♙"],
+  ["contact", "/lien-he/", "Liên hệ", "☎"],
 ];
 
 const fallbackPlans = [
@@ -38,12 +38,12 @@ function brand() {
 }
 
 function header() {
-  const links = navItems.map(([key, href, label]) => `<a href="${href}" class="${page === key ? "is-active" : ""}">${label}${key === "pricing" ? '<em>HOT</em>' : ""}</a>`).join("");
+  const links = navItems.map(([key, href, label, icon]) => `<a href="${href}" class="${page === key ? "is-active" : ""}"><span class="nav-icon" aria-hidden="true">${icon}</span><span>${label}</span>${key === "pricing" ? '<em>HOT</em>' : ""}</a>`).join("");
   return `<header class="site-header"><div class="container nav-wrap">${brand()}
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Mở menu"><span></span><span></span><span></span></button>
     <nav class="main-nav" id="main-nav" aria-label="Điều hướng chính">${links}</nav>
     <a class="button button--dns" href="/tai-dns/">↓ Tải DNS</a>
-  </div></header>`;
+  </div><button class="nav-backdrop" type="button" aria-label="Đóng menu" tabindex="-1" hidden></button></header>`;
 }
 
 function footer() {
@@ -85,10 +85,10 @@ const pages = {
   </div></section>
   <section class="feature-strip"><div class="container"><span>Không yêu cầu đăng nhập để mua</span><span>Mã giảm giá theo phần trăm</span><span>Hướng dẫn sau thanh toán</span><span>Hỗ trợ nhanh chóng</span></div></section>
   <section class="section image-benefits"><div class="container"><div class="section-heading"><span class="eyebrow">Từ bộ ảnh Locket Gold</span><h2>Đơn giản và dễ bắt đầu</h2><p>Những điều bạn cần biết trước khi chọn gói.</p></div><div class="image-benefits-grid">
-    <article class="image-benefit"><span class="benefit-icon">@</span><div><h3>Chỉ cần Username</h3><p>Biểu mẫu không yêu cầu mật khẩu hay OTP.</p></div></article>
-    <article class="image-benefit"><span class="benefit-icon">⌁</span><div><h3>Không cần VPN</h3><p>Hướng dẫn kết nối DNS được trình bày riêng nếu gói cần cài đặt.</p></div></article>
-    <article class="image-benefit"><span class="benefit-icon">♡</span><div><h3>Không cần app lạ</h3><p>Thao tác đặt gói trực tiếp trên website.</p></div></article>
-    <article class="image-benefit"><span class="benefit-icon">✓</span><div><h3>Không cần mật khẩu</h3><p>Chỉ cung cấp Username và kênh liên hệ để tạo đơn.</p></div></article>
+    <article class="image-benefit"><span class="benefit-icon">♡</span><div><span class="benefit-label">Tiện lợi</span><h3>Không cần app đặt hàng</h3><p>Chọn gói và gửi đơn trực tiếp trên trình duyệt, không phải cài thêm ứng dụng để mua.</p></div></article>
+    <article class="image-benefit"><span class="benefit-icon">⌁</span><div><span class="benefit-label">Thoải mái</span><h3>Không cần VPN</h3><p>Đặt đơn trên website mà không cần đổi VPN. Nếu gói bạn chọn cần cài DNS, hướng dẫn riêng sẽ hiện rõ.</p></div></article>
+    <article class="image-benefit"><span class="benefit-icon">@</span><div><span class="benefit-label">Riêng tư</span><h3>Chỉ cần Username</h3><p>Nhập chính xác Username Locket. Biểu mẫu không hỏi mật khẩu, OTP hay mã khôi phục.</p></div></article>
+    <article class="image-benefit"><span class="benefit-icon">✓</span><div><span class="benefit-label">An toàn</span><h3>Không yêu cầu mật khẩu</h3><p>Thông tin hồ sơ chỉ được tra cứu khi API tương ứng đã được tích hợp; hiện website chưa xác minh avatar hay tên tài khoản.</p></div></article>
   </div></div></section>
   <section class="section"><div class="container"><div class="section-heading"><span class="eyebrow">Bảng giá minh bạch</span><h2>Bốn lựa chọn cho từng nhu cầu</h2><p>Giá hiển thị trước khi xác nhận, không có chi phí ẩn.</p></div><div id="home-plans">${planCards()}</div></div></section>
   <section class="section section--tint"><div class="container two-col"><div><span class="eyebrow">Quy trình</span><h2>Bốn bước rõ ràng</h2><p>Không cần tạo tài khoản khách hàng. Bước xác nhận chỉ giúp bạn tự kiểm tra Username đã nhập, chưa phải tra cứu tài khoản Locket.</p></div><ol class="step-list"><li><b>01</b><div><strong>Nhập thông tin</strong><span>Nhập Username và kênh liên hệ; không nhập mật khẩu hay OTP.</span></div></li><li><b>02</b><div><strong>Tự xác nhận</strong><span>Kiểm tra lại Username trước khi tạo đơn.</span></div></li><li><b>03</b><div><strong>Chọn gói</strong><span>Kiểm tra nền tảng, thời hạn và số tiền.</span></div></li><li><b>04</b><div><strong>Thanh toán & theo dõi</strong><span>Nhận mã đơn và hướng dẫn sau khi tạo đơn.</span></div></li></ol></div></section>
@@ -137,7 +137,7 @@ const pages = {
     <div class="center"><a class="button" href="/len-gold/">Chọn gói Gold →</a></div>
   </div></section>`),
 
-  contact: () => publicShell(`${pageHero("Liên hệ", "Bạn cần hỗ trợ?", "Liên hệ qua các kênh chính thức dưới đây; không gửi mật khẩu hoặc OTP qua bất kỳ kênh nào.")}<section class="section section--compact"><div class="container"><img class="contact-banner" src="/images/lienhe.webp" alt="Banner liên hệ hỗ trợ Locket Gold" width="2048" height="768" decoding="async"><div id="contact-links" class="contact-grid"><article><span>◉</span><h2>Zalo</h2><p>Liên kết nhóm hỗ trợ sẽ được cập nhật.</p></article><article><span>f</span><h2>Facebook</h2><p>Liên kết trang hỗ trợ sẽ được cập nhật.</p></article></div></div></section>`),
+  contact: () => publicShell(`${pageHero("Liên hệ", "Bạn cần hỗ trợ?", "Liên hệ qua các kênh chính thức dưới đây; không gửi mật khẩu hoặc OTP qua bất kỳ kênh nào.")}<section class="section section--compact"><div class="container"><img class="contact-banner" src="/images/lienhe.webp" alt="Banner liên hệ hỗ trợ Locket Gold" width="2048" height="768" decoding="async"><div id="contact-links" class="contact-grid"><article><span class="social-icon social-icon--zalo" aria-hidden="true">Zalo</span><h2>Zalo</h2><p>Liên kết nhóm hỗ trợ sẽ được cập nhật.</p></article><article><span class="social-icon social-icon--facebook" aria-hidden="true">f</span><h2>Facebook</h2><p>Liên kết trang hỗ trợ sẽ được cập nhật.</p></article></div></div></section>`),
 
   checkout: checkoutPage,
   ctv: ctvPage,
@@ -182,12 +182,19 @@ document.querySelector("#current-year")?.replaceChildren(String(new Date().getFu
 function initNavigation() {
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".main-nav");
-  if (!toggle || !nav) return;
-  toggle.addEventListener("click", () => {
-    const open = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!open));
-    nav.classList.toggle("is-open", !open);
-  });
+  const backdrop = document.querySelector(".nav-backdrop");
+  if (!toggle || !nav || !backdrop) return;
+  const setOpen = (open) => {
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
+    nav.classList.toggle("is-open", open);
+    backdrop.hidden = !open;
+    document.body.classList.toggle("nav-open", open);
+  };
+  toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+  backdrop.addEventListener("click", () => setOpen(false));
+  nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") setOpen(false); });
 }
 
 function initGuide() {
@@ -280,8 +287,8 @@ async function loadDownloads() {
     const contact = document.querySelector("#contact-links");
     if (contact) {
       const cards = [];
-      if (config.support_zalo) cards.push(`<article><span>◉</span><h2>Zalo</h2><p>Nhắn vào nhóm hỗ trợ chính thức.</p><a href="${escapeHtml(config.support_zalo)}" target="_blank" rel="noopener noreferrer">Mở Zalo ↗</a></article>`);
-      if (config.support_facebook) cards.push(`<article><span>f</span><h2>Facebook</h2><p>Theo dõi trang hỗ trợ chính thức.</p><a href="${escapeHtml(config.support_facebook)}" target="_blank" rel="noopener noreferrer">Mở Facebook ↗</a></article>`);
+      if (config.support_zalo) cards.push(`<article><span class="social-icon social-icon--zalo" aria-hidden="true">Zalo</span><h2>Zalo</h2><p>Nhắn vào nhóm hỗ trợ chính thức.</p><a href="${escapeHtml(config.support_zalo)}" target="_blank" rel="noopener noreferrer">Mở Zalo ↗</a></article>`);
+      if (config.support_facebook) cards.push(`<article><span class="social-icon social-icon--facebook" aria-hidden="true">f</span><h2>Facebook</h2><p>Theo dõi trang hỗ trợ chính thức.</p><a href="${escapeHtml(config.support_facebook)}" target="_blank" rel="noopener noreferrer">Mở Facebook ↗</a></article>`);
       if (cards.length) contact.innerHTML = cards.join("");
     }
   } catch { /* Keep controls disabled until configured. */ }
@@ -629,11 +636,23 @@ async function showActivity() {
     const { activities } = await api("/api/activity");
     if (!activities?.length) return;
     const item = activities[Math.floor(Math.random() * activities.length)];
-    toast.innerHTML = `<button aria-label="Đóng">×</button><span class="activity-icon">✓</span><div><strong>Giao dịch đã xác thực</strong><p><b>${escapeHtml(item.username)}</b> vừa nâng cấp ${escapeHtml(item.plan_name)}</p></div>`;
+    toast.innerHTML = `<button aria-label="Đóng">×</button><span class="activity-icon" aria-hidden="true">LG</span><div class="activity-copy"><div><strong>Giao dịch đã xác thực</strong><time>${escapeHtml(relativeTime(item.paid_at))}</time></div><p><b>${escapeHtml(item.username)}</b> vừa nâng cấp <b>${escapeHtml(item.plan_name)}</b></p></div>`;
     toast.hidden = false;
     toast.querySelector("button").addEventListener("click", () => { toast.hidden = true; });
     window.setTimeout(() => { toast.hidden = true; }, 9000);
   } catch { /* Never invent activity when there are no verified orders. */ }
+}
+
+function relativeTime(value) {
+  const timestamp = new Date(value).getTime();
+  if (!Number.isFinite(timestamp)) return "mới đây";
+  const elapsedSeconds = Math.max(0, (Date.now() - timestamp) / 1000);
+  const formatter = new Intl.RelativeTimeFormat("vi", { numeric: "auto" });
+  if (elapsedSeconds >= 86400 * 30) return new Intl.DateTimeFormat("vi", { day: "numeric", month: "short" }).format(timestamp);
+  if (elapsedSeconds >= 86400) return formatter.format(-Math.floor(elapsedSeconds / 86400), "day");
+  if (elapsedSeconds >= 3600) return formatter.format(-Math.floor(elapsedSeconds / 3600), "hour");
+  if (elapsedSeconds >= 60) return formatter.format(-Math.floor(elapsedSeconds / 60), "minute");
+  return "vừa xong";
 }
 
 initNavigation();
