@@ -109,7 +109,7 @@ h1, h2, h3, p { margin-top: 0; }
 .safe-note small { margin-top: 3px; color: var(--muted); font-size: .65rem; }
 .hero-art { position: relative; padding: 22px; background: linear-gradient(145deg, #fff, #ffddea); border: 1px solid var(--pink-200); border-radius: 50px 95px 45px 100px; box-shadow: var(--shadow); transform: rotate(1.5deg); }
 .hero-art img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; border-radius: 34px 73px 30px 76px; }
-.float-chip { position: absolute; z-index: 2; padding: 12px 15px; color: var(--ink); font-size: .68rem; font-weight: 800; background: transparent; border: 0; box-shadow: none; transform: rotate(-1.5deg); }
+.float-chip { position: absolute; z-index: 2; padding: 12px 15px; color: var(--ink); font-size: .68rem; font-weight: 800; background: rgba(255,255,255,.94); border: 1px solid var(--pink-200); border-radius: 13px; box-shadow: 0 12px 30px rgba(96, 34, 62, .16); transform: rotate(-1.5deg); }
 .hero-art .float-chip { font-family: "Baloo 2", ui-rounded, system-ui, sans-serif; }
 .float-chip--top { top: 12px; right: -25px; }
 .float-chip--bottom { bottom: 20px; left: -35px; }
