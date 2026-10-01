@@ -324,7 +324,7 @@ th { color: var(--muted); font-size: .6rem; text-transform: uppercase; }
 .activity-copy > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
 .activity-copy time { color: var(--muted); font-size: .72rem; }
 .activity-toast p { margin: 5px 0 0; font-size: .82rem; line-height: 1.45; }
-.floating-support { position: fixed; z-index: 70; right: 20px; bottom: 20px; display: block; width: 188px; padding: 0; overflow: hidden; background: #fff; border: 2px solid #fff; border-radius: 18px; box-shadow: 0 12px 32px rgba(189,33,92,.25); }
+.floating-support { position: fixed; z-index: 70; right: 20px; bottom: 20px; display: block; width: 188px; padding: 0; background: transparent; border: 0; box-shadow: none; filter: drop-shadow(0 6px 12px rgba(189,33,92,.18)); }
 .floating-support img { width: 100%; height: auto; }
 .floating-support:focus-visible { outline: 3px solid var(--pink-600); outline-offset: 4px; }
 body.nav-open .floating-support, body.nav-open .activity-toast { visibility: hidden; }
@@ -478,7 +478,7 @@ body:not([data-page="admin"]) :is(.form-card label small, .privacy-line, .bank-b
   .dns-download .button { width: 100%; }
   .promo-row, .form-row { grid-template-columns: 1fr; }
   .checkout-progress li { padding: 9px 3px; font-size: .72rem; }
-  .floating-support { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: 140px; border-radius: 13px; }
+  .floating-support { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: 140px; }
   .activity-toast { left: 12px; bottom: calc(80px + env(safe-area-inset-bottom)); width: min(calc(100% - 24px), 390px); padding: 12px; grid-template-columns: 42px 1fr; }
   .activity-icon { width: 40px; height: 40px; }
   .welcome-modal { padding: 28px 22px; }
