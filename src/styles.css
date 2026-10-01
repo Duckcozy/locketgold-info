@@ -41,6 +41,7 @@ h1, h2, h3, p { margin-top: 0; }
 .nav-wrap { display: flex; height: 100%; align-items: center; gap: 16px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
 .brand-image { width: 60px; height: 40px; object-fit: contain; }
+.header-brand-image { display: block; width: 202px; height: auto; object-fit: contain; }
 .brand > span:last-child { display: grid; }
 .brand strong { font-size: .92rem; }
 .brand small { margin-top: 2px; color: var(--muted); font-size: .62rem; }
@@ -476,6 +477,7 @@ body:not([data-page="admin"]) :is(.form-card label small, .privacy-line, .bank-b
   .container { width: min(calc(100% - 26px), var(--container)); }
   .brand small { display: none; }
   .brand-image { width: 48px; height: 36px; }
+  .header-brand-image { width: clamp(140px, 42vw, 180px); }
   .button--dns { padding: 8px 10px; font-size: .8rem; }
   .hero { display: grid; min-height: calc(100svh - 70px); align-items: center; padding: 24px 0 26px; }
   .hero-grid { width: min(calc(100% - 32px), 500px); gap: 20px; }

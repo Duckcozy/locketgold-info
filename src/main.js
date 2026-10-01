@@ -56,7 +56,12 @@ function navIcon(key) {
 const money = (value) => `${new Intl.NumberFormat("vi-VN").format(Number(value || 0))}đ`;
 const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]);
 
-function brand() {
+function brand(isHeader = false) {
+  if (isHeader) {
+    return `<a class="brand brand--header" href="/" aria-label="Locket Gold - Trang chủ">
+      <img class="header-brand-image" src="/images/locket-gold-brand.png" alt="Locket Gold - locketgold.info" width="562" height="167" decoding="async">
+    </a>`;
+  }
   return `<a class="brand" href="/" aria-label="Locket Gold - Trang chủ">
     <img class="brand-image" src="/images/logo.png" alt="" width="60" height="40" decoding="async">
     <span><strong>Locket Gold</strong><small>locketgold.info</small></span>
@@ -65,7 +70,7 @@ function brand() {
 
 function header() {
   const links = navItems.map(([key, href, label]) => `<a href="${href}" class="${page === key ? "is-active" : ""} ${key === "pricing" ? "nav-link--gold" : ""}" ${page === key ? 'aria-current="page"' : ""}><span class="nav-icon" aria-hidden="true">${navIcon(key)}</span><span>${label}</span>${key === "pricing" ? '<em>HOT</em>' : ""}</a>`).join("");
-  return `<header class="site-header"><div class="container nav-wrap">${brand()}
+  return `<header class="site-header"><div class="container nav-wrap">${brand(true)}
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Mở menu"><span></span><span></span><span></span></button>
     <nav class="main-nav" id="main-nav" aria-label="Điều hướng chính"><div class="nav-drawer-heading"><div><strong>Khám phá Locket Gold</strong><small>locketgold.info</small></div><button class="nav-close" type="button" aria-label="Đóng menu">×</button></div>${links}</nav>
     <a class="button button--dns" href="/tai-dns/">↓ Tải DNS</a>
