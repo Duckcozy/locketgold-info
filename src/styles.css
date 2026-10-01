@@ -103,6 +103,7 @@ h1, h2, h3, p { margin-top: 0; }
 .image-benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .image-benefit { overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 12px 34px rgba(110, 37, 69, .07); text-align: center; }
 .image-benefit img { width: 100%; height: 185px; padding: 12px; object-fit: contain; background: linear-gradient(135deg, #fffafc, var(--pink-100)); }
+.image-benefit--white img { background: #fff; }
 .benefit-icon { display: grid; min-height: 150px; place-items: center; color: var(--pink-700); font-size: 3.4rem; font-weight: 900; background: radial-gradient(circle, #fff 0 30%, transparent 31%), linear-gradient(135deg, #fff0f6, #ffe1ec); }
 .image-benefit div { display: grid; min-height: 190px; align-content: start; justify-items: center; padding: 24px; }
 .benefit-label { margin-bottom: 7px; color: var(--pink-600); font-size: .78rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
