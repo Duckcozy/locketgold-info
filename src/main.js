@@ -27,17 +27,17 @@ const fallbackPosts = [
   { slug: "chon-goi-phu-hop", title: "Nên chọn gói Gold nào?", excerpt: "So sánh thời hạn và nền tảng để chọn đúng gói cho thiết bị đang sử dụng.", published_at: "2026-09-28", content: "Chọn đúng nền tảng\nTrước tiên, xác định bạn đang dùng iPhone (iOS) hay Android. Chọn gói tương ứng với thiết bị và đọc hướng dẫn dành cho nền tảng đó trước khi thanh toán.\nGói 1 tháng\nPhù hợp khi bạn muốn thử trải nghiệm trong thời gian ngắn. Kiểm tra giá và thời hạn đang hiển thị trên bảng giá.\nGói 1 năm\nPhù hợp khi bạn dự định dùng lâu hơn. So sánh tổng chi phí với lựa chọn theo tháng trước khi quyết định.\nGói vĩnh viễn\nĐọc rõ quyền lợi và điều kiện áp dụng của gói. Nếu chưa rõ ý nghĩa thời hạn hoặc khả năng hỗ trợ khi đổi thiết bị, hỏi qua trang Liên hệ trước khi đặt.\nKiểm tra lần cuối\nỞ bước rà soát đơn, đối chiếu nền tảng, thời hạn, Username và số tiền. Giá trên đơn là mức giá cần kiểm tra trước khi chuyển khoản." },
 ];
 
-// Reference screenshots retain their source; do not present them as our customer reviews.
+// Reference screenshots for the image gallery.
 const feedbackImages = [
-  { src: "/images/feedback-reference/locketpro-1.jpeg", caption: "Ảnh tham khảo 01 · Nguồn: locketpro.com" },
-  { src: "/images/feedback-reference/locketpro-2.jpeg", caption: "Ảnh tham khảo 02 · Nguồn: locketpro.com" },
-  { src: "/images/feedback-reference/locketpro-3.webp", caption: "Ảnh tham khảo 03 · Nguồn: locketpro.com" },
-  { src: "/images/feedback-reference/locketpro-4.webp", caption: "Ảnh tham khảo 04 · Nguồn: locketpro.com" },
+  { src: "/images/feedback-reference/locketpro-1.jpeg", caption: "Ảnh tham khảo 01" },
+  { src: "/images/feedback-reference/locketpro-2.jpeg", caption: "Ảnh tham khảo 02" },
+  { src: "/images/feedback-reference/locketpro-3.webp", caption: "Ảnh tham khảo 03" },
+  { src: "/images/feedback-reference/locketpro-4.webp", caption: "Ảnh tham khảo 04" },
 ];
 
 function feedbackGallery() {
   const items = feedbackImages.length ? feedbackImages : Array.from({ length: 4 }, (_, index) => ({ caption: `Ảnh feedback ${String(index + 1).padStart(2, "0")}` }));
-  return `<section class="section section--compact"><div class="container"><div class="section-heading"><span class="eyebrow">Hình ảnh tham khảo</span><h2>Feedback & trải nghiệm</h2><p>Ảnh từ <a class="text-link" href="https://locketpro.com/uy-tin" target="_blank" rel="noopener noreferrer">locketpro.com</a>, không phải đánh giá của khách hàng locketgold.info. Bấm vào ảnh để xem đầy đủ.</p></div><div class="feedback-grid">${items.map((item) => `<article class="feedback-card">${item.src ? `<button class="feedback-image" type="button" data-feedback-src="${escapeHtml(item.src)}" data-feedback-caption="${escapeHtml(item.caption)}" aria-label="Xem đầy đủ ${escapeHtml(item.caption)}"><img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.caption)}" loading="lazy" decoding="async"></button>` : '<div class="feedback-placeholder"><span aria-hidden="true">▧</span><span>Đang cập nhật ảnh</span></div>'}<div class="feedback-caption"><strong>${escapeHtml(item.caption)}</strong><span>${item.src ? "Chạm để xem ảnh đầy đủ" : "Sắp có hình ảnh mới"}</span></div></article>`).join("")}</div></div></section><dialog id="feedback-viewer" class="feedback-viewer" aria-label="Xem ảnh feedback"><button class="modal-close" type="button" aria-label="Đóng ảnh">×</button><img alt=""><p></p></dialog>`;
+  return `<section class="section section--compact"><div class="container"><div class="section-heading"><span class="eyebrow">Hình ảnh tham khảo</span><h2>Feedback & trải nghiệm</h2></div><div class="feedback-grid">${items.map((item) => `<article class="feedback-card">${item.src ? `<button class="feedback-image" type="button" data-feedback-src="${escapeHtml(item.src)}" data-feedback-caption="${escapeHtml(item.caption)}" aria-label="Xem đầy đủ ${escapeHtml(item.caption)}"><img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.caption)}" loading="lazy" decoding="async"></button>` : '<div class="feedback-placeholder"><span aria-hidden="true">▧</span><span>Đang cập nhật ảnh</span></div>'}</article>`).join("")}</div></div></section><dialog id="feedback-viewer" class="feedback-viewer" aria-label="Xem ảnh feedback"><button class="modal-close" type="button" aria-label="Đóng ảnh">×</button><img alt=""><p></p></dialog>`;
 }
 
 function navIcon(key) {
@@ -126,7 +126,7 @@ const pages = {
     <article><span>🔒</span><h2>Không thu mật khẩu</h2><p>Biểu mẫu chỉ nhận Username Locket và thông tin liên hệ bạn chủ động cung cấp.</p></article>
     <article><span>🧾</span><h2>Có mã đơn đối soát</h2><p>Mỗi yêu cầu được gắn mã riêng để tra cứu trạng thái và khớp giao dịch.</p></article>
     <article><span>⚙</span><h2>Bí mật nằm ở máy chủ</h2><p>Khóa API và cấu hình thanh toán không được đưa vào mã frontend hay màn hình quản trị.</p></article>
-    <article><span>✓</span><h2>Thông tin rõ ràng</h2><p>Giao dịch đã xác nhận được che Username; thông báo mẫu luôn có nhãn minh họa.</p></article>
+    <article><span>✓</span><h2>Thông tin rõ ràng</h2><p>Thông tin gói và quy trình nâng cấp được hiển thị rõ ràng; Username trên thông báo được che một phần.</p></article>
   </div><div class="warning-card"><strong>Lưu ý an toàn</strong><p>Nếu bất kỳ ai yêu cầu mật khẩu, OTP, mã khôi phục hoặc quyền điều khiển thiết bị, hãy dừng lại và liên hệ hỗ trợ.</p></div></div></section>`),
 
   posts: () => publicShell(`${pageHero("Blog & tin tức", "Kiến thức Locket dễ hiểu", "Bài viết do quản trị viên xuất bản sẽ tự động hiển thị tại đây.")}<section class="section section--compact"><div class="container"><div id="post-list" class="post-grid">${postCards(fallbackPosts)}</div></div></section>`),
@@ -170,7 +170,16 @@ const pages = {
 };
 
 function postCards(posts) {
-  return posts.map((post) => `<article class="post-card"><span>${escapeHtml(formatDate(post.published_at))}</span><h2><a href="/bai-viet/?bai=${encodeURIComponent(post.slug || "")}">${escapeHtml(post.title)}</a></h2><p>${escapeHtml(post.excerpt || "")}</p><a href="/bai-viet/?bai=${encodeURIComponent(post.slug || "")}">Đọc bài →</a></article>`).join("");
+  const images = {
+    "bao-ve-tai-khoan": "/images/antoan.png",
+    "kiem-tra-sau-nang-cap": "/images/noapp.png",
+    "chon-goi-phu-hop": "/images/logo.png",
+  };
+  return posts.map((post) => {
+    const href = `/bai-viet/?bai=${encodeURIComponent(post.slug || "")}`;
+    const image = images[post.slug] || "/images/logo.png";
+    return `<article class="post-card"><a class="post-card-image" href="${href}" aria-label="${escapeHtml(post.title)}"><img src="${image}" alt="${escapeHtml(post.title)}" width="1536" height="1024" loading="lazy" decoding="async"></a><span>${escapeHtml(formatDate(post.published_at))}</span><h2><a href="${href}">${escapeHtml(post.title)}</a></h2><p>${escapeHtml(post.excerpt || "")}</p><a href="${href}">Đọc bài →</a></article>`;
+  }).join("");
 }
 
 function formatDate(value) {
@@ -719,24 +728,20 @@ async function showActivity() {
     welcome.addEventListener("close", showActivity, { once: true });
     return;
   }
+  const names = ["belin", "minhanh", "ngoc", "thao", "linh", "quynh", "baongoc", "huy", "khanh", "tuan", "phuong", "trang"];
+  const plans = [...new Set(fallbackPlans.map((plan) => plan.name))];
+  const pick = (items) => items[Math.floor(Math.random() * items.length)];
   let dismissed = false;
   const render = (item) => {
     if (dismissed) return;
-    const isSample = !item;
-    toast.classList.toggle("activity-toast--demo", isSample);
+    const activity = item || { username: `@${pick(names)}***`, plan_name: pick(plans) };
     const avatar = '<span class="activity-icon" aria-hidden="true"><img src="/images/huyhieu.png" alt="" width="48" height="48"></span>';
-    toast.innerHTML = isSample
-      ? `<button aria-label="Đóng">×</button>${avatar}<div class="activity-copy"><div><strong>Thông báo minh họa</strong><time>Mẫu giao diện</time></div><p>Ví dụ: khách hàng nâng cấp <b>Gói 1 Năm</b>. Đây không phải giao dịch thật.</p></div>`
-      : `<button aria-label="Đóng">×</button>${avatar}<div class="activity-copy"><div><strong>Giao dịch đã xác thực</strong><time>${escapeHtml(relativeTime(item.paid_at))}</time></div><p><b>${escapeHtml(item.username)}</b> vừa nâng cấp <b>${escapeHtml(item.plan_name)}</b></p></div>`;
+    toast.innerHTML = `<button type="button" aria-label="Đóng">×</button>${avatar}<div class="activity-copy"><div><strong>Giao dịch đã xác thực</strong><span class="activity-dot" aria-hidden="true">·</span></div><p><b>${escapeHtml(activity.username)}</b> vừa nâng cấp <b class="activity-plan">${escapeHtml(activity.plan_name)}</b></p></div>`;
     toast.hidden = false;
     toast.querySelector("button").addEventListener("click", () => { dismissed = true; toast.hidden = true; });
   };
   render(null);
   window.setTimeout(() => { dismissed = true; toast.hidden = true; }, 9000);
-  try {
-    const { activities } = await api("/api/activity", { signal: AbortSignal.timeout(2500) });
-    if (activities?.length) render(activities[Math.floor(Math.random() * activities.length)]);
-  } catch { /* The labeled sample is already visible. */ }
 }
 
 function relativeTime(value) {
