@@ -150,6 +150,8 @@ h1, h2, h3, p { margin-top: 0; }
 .contact-grid .social-icon { display: grid; width: 46px; height: 46px; place-items: center; font-size: .72rem; font-weight: 900; border-radius: 50%; }
 .social-icon--zalo { color: #fff; background: #1684ff; }
 .social-icon--facebook { color: #fff; font-family: Arial, sans-serif; font-size: 1.55rem !important; background: #1877f2; }
+.social-icon--telegram { color: #fff; background: #27a5e7; }
+.social-icon--telegram svg { width: 23px; height: 23px; fill: currentColor; }
 .contact-banner { width: 100%; height: auto; max-height: 430px; margin-bottom: 28px; object-fit: contain; background: linear-gradient(120deg, #fff, var(--pink-100)); border: 1px solid var(--pink-200); border-radius: 24px; }
 .warning-card { margin-top: 25px; padding: 20px 23px; color: #78213f; background: #fff0f4; border: 1px solid #f2b9ca; border-radius: 16px; }
 .warning-card strong { font-size: .82rem; }

@@ -85,13 +85,14 @@ async function getPost(env, slug) {
 }
 
 async function getPublicConfig(env) {
-  const settings = await readSettings(env, ["dns_url", "apk_url", "support_email", "support_zalo", "support_facebook"]);
+  const settings = await readSettings(env, ["dns_url", "apk_url", "support_email", "support_zalo", "support_facebook", "support_telegram"]);
   return json({
     dns_url: settings.dns_url || env.DNS_DOWNLOAD_URL || "",
     apk_url: settings.apk_url || env.ANDROID_APK_URL || "",
     support_email: settings.support_email || env.SUPPORT_EMAIL || "",
     support_zalo: settings.support_zalo || env.SUPPORT_ZALO_URL || "",
     support_facebook: settings.support_facebook || env.SUPPORT_FACEBOOK_URL || "",
+    support_telegram: settings.support_telegram || env.SUPPORT_TELEGRAM_URL || "",
   });
 }
 
@@ -240,9 +241,9 @@ async function adminSavePlan(request, env) {
 async function adminSaveSettings(request, env) {
   await requireSession(request, env, "admin"); requireDb(env);
   const body = await readJson(request);
-  const allowed = ["dns_url", "apk_url", "upstream_api_url", "support_zalo", "support_facebook"];
+  const allowed = ["dns_url", "apk_url", "upstream_api_url", "support_zalo", "support_facebook", "support_telegram"];
   for (const key of allowed) {
-    const value = ["dns_url", "apk_url", "upstream_api_url", "support_zalo", "support_facebook"].includes(key) ? cleanUrl(body[key]) : "";
+    const value = cleanUrl(body[key]);
     await env.DB.prepare("INSERT INTO settings (key, value, updated_at) VALUES (?, ?, CURRENT_TIMESTAMP) ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = CURRENT_TIMESTAMP").bind(key, value).run();
   }
   return json({ message: "Đã lưu cấu hình công khai. Khóa bí mật không bị thay đổi." });
