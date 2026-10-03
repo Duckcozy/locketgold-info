@@ -16,7 +16,7 @@ const navItems = [
 
 const fallbackPlans = [
   { id: "ios-month", name: "Gói 1 tháng", platform: "iOS", price: 29000, period: "1 tháng", featured: false },
-  { id: "ios-year", name: "Gói 1 năm", platform: "iOS", price: 60000, period: "1 năm", featured: false },
+  { id: "ios-year", name: "Gói 1 năm", platform: "iOS", price: 59000, period: "1 năm", featured: false },
   { id: "ios-lifetime", name: "Gói vĩnh viễn", platform: "iOS", price: 149000, period: "trọn đời", featured: true },
   { id: "android-lifetime", name: "Gói vĩnh viễn", platform: "Android", price: 180000, period: "trọn đời", featured: false },
 ];
